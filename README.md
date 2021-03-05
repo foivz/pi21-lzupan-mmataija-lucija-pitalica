@@ -12,7 +12,7 @@ Lucija Žužul | lzuzul@foi.hr | 0016136904 | Lucija-pitalica
 Marta Mataija | mmataija@foi.hr | 0016137670 | mmataija
 
 ## Opis domene
-Glavna funkcija ove aplikacije je rezervacija hotelske sobe. Prvi korak je prijava. U aplikaciju se može prijaviti zaposlenik, admin i gost. Idući korak je pregled slobodnih soba za željeni datum boravka u hotelu. Idući korak od strane gosta je rezervacija sobe ukoliko mu odgovara. Kada zaposlenik vidi rezervaciju sobe koju je gost napravio, njegova dužnost je prijaviti gosta u sobu, a pri odlasku gosta dužan ga je odjaviti. Jedna od opcija je da gost može prijaviti kvar za vrijeme svog boravka u hotelu u obliku online forme te napisati recenziju. 
+Glavna funkcija ove aplikacije je rezervacija hotelske sobe. Prvi korak je prijava. U aplikaciju se može prijaviti zaposlenik, admin i gost. Idući korak je pregled slobodnih soba za željeni datum boravka u hotelu. Idući korak od strane gosta je rezervacija sobe ukoliko mu odgovara. Kada zaposlenik vidi rezervaciju sobe koju je gost napravio, njegova dužnost je prijaviti gosta u sobu, a pri odlasku gosta dužan ga je odjaviti. Jedna od opcija je da gost može prijaviti kvar za vrijeme svog boravka u hotelu u obliku forme te napisati recenziju. 
 
 ## Specifikacija projekta
 

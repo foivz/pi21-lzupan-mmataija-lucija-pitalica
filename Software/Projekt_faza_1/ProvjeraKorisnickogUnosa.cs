@@ -18,6 +18,7 @@ namespace Projekt_faza_1
             string korIme = "";
             string lozinka = "";
             string povratnaPoruka = "";
+
             foreach (TextBox unos in lista)
             {
                 if (unos.Name == "textBoxKorisnickoIme")

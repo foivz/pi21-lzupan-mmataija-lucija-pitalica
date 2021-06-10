@@ -10,7 +10,8 @@ namespace Projekt_faza_1
     {
         public static int Uloga_id { get; set; }
         public static int Korisnik_id { get; set; }
-        public static string Korisnicko_ime { get; set; }
+        public static string Korisnicko_ime { get;
+          set; }
         public static string Lozinka { get; set; }
 
 

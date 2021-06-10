@@ -23,6 +23,7 @@ namespace Projekt_faza_1
             {
                 if (unos.Name == "textBoxKorisnickoIme")
                 {
+
                     korIme = unos.Text;
                     povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKorisnickoIme(unos.Text);
                 }

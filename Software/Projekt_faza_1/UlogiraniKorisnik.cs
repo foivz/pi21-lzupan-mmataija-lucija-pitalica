@@ -13,6 +13,8 @@ namespace Projekt_faza_1
         public static string Korisnicko_ime { get; set; }
         public static string Lozinka { get; set; }
 
+
+
         public static void Odjava()
         {
             Uloga_id = 0;

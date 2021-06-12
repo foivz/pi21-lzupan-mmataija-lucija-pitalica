@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E677FC04-83E3-42B4-94FA-77E63F687F7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Projekt_faza_1</RootNamespace>
+    <AssemblyName>Projekt_faza_1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bogus, Version=33.0.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>packages\Bogus.33.0.2\lib\net40\Bogus.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzurirajSobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzurirajSobu.Designer.cs">
+      <DependentUpon>AzurirajSobu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrisanjeHotela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrisanjeHotela.Designer.cs">
+      <DependentUpon>BrisanjeHotela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs" />
+    <Compile Include="DodajHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajHotel.Designer.cs">
+      <DependentUpon>DodajHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajSobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajSobu.Designer.cs">
+      <DependentUpon>DodajSobu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAzurirajHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAzurirajHotel.Designer.cs">
+      <DependentUpon>FrmAzurirajHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaAdmin.Designer.cs">
+      <DependentUpon>FrmGlavnaFormaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaGost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaGost.Designer.cs">
+      <DependentUpon>FrmGlavnaFormaGost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaZaposlenik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlavnaFormaZaposlenik.Designer.cs">
+      <DependentUpon>FrmGlavnaFormaZaposlenik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpozorenje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpozorenje.Designer.cs">
+      <DependentUpon>FrmUpozorenje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gost.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IzmjenaPodatakaZaposlenikaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzmjenaPodatakaZaposlenikaAdmin.Designer.cs">
+      <DependentUpon>IzmjenaPodatakaZaposlenikaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelReservation.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelReservation.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelReservation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelReservation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelReservation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjesca.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjesce_sadrzi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klase\KorisnikKlasa.cs" />
+    <Compile Include="Korisnik.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klase\KorisnikRepozitorij.cs" />
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ObrisiSobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ObrisiSobu.Designer.cs">
+      <DependentUpon>ObrisiSobu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OdgovorNaUpit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OdgovorNaUpit.Designer.cs">
+      <DependentUpon>OdgovorNaUpit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popravio_kvar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PregledHotelaGost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledHotelaGost.Designer.cs">
+      <DependentUpon>PregledHotelaGost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledPrijavaKvarova.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledPrijavaKvarova.Designer.cs">
+      <DependentUpon>PregledPrijavaKvarova.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledRecenzija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledRecenzija.Designer.cs">
+      <DependentUpon>PregledRecenzija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledRezervacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledRezervacija.Designer.cs">
+      <DependentUpon>PregledRezervacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledSobaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledSobaAdmin.Designer.cs">
+      <DependentUpon>PregledSobaAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledSobaGost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledSobaGost.Designer.cs">
+      <DependentUpon>PregledSobaGost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledSobaZaposlenik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledSobaZaposlenik.Designer.cs">
+      <DependentUpon>PregledSobaZaposlenik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledSvihHotelaGost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledSvihHotelaGost.Designer.cs">
+      <DependentUpon>PregledSvihHotelaGost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledUpita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledUpita.Designer.cs">
+      <DependentUpon>PregledUpita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledZaposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledZaposlenika.Designer.cs">
+      <DependentUpon>PregledZaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prijava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prijava.Designer.cs">
+      <DependentUpon>Prijava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajZaposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajZaposlenika.Designer.cs">
+      <DependentUpon>DodajZaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izmjena podataka zaposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izmjena podataka zaposlenika.Designer.cs">
+      <DependentUpon>Izmjena podataka zaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostaviUpit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostaviUpit.Designer.cs">
+      <DependentUpon>PostaviUpit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledHotela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledHotela.Designer.cs">
+      <DependentUpon>PregledHotela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledSoba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledSoba.Designer.cs">
+      <DependentUpon>PregledSoba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrijavaKvara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrijavaKvara.Designer.cs">
+      <DependentUpon>PrijavaKvara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prijava_kvara.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvjeraKorisnickogUnosa.cs" />
+    <Compile Include="ProvjeraOsobnihPodataka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvjeraOsobnihPodataka.Designer.cs">
+      <DependentUpon>ProvjeraOsobnihPodataka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recenzija.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recenzija.Designer.cs">
+      <DependentUpon>Recenzija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecenzijaForma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecenzijaForma.Designer.cs">
+      <DependentUpon>RecenzijaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rezervacija.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RezervirajSobu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RezervirajSobu.Designer.cs">
+      <DependentUpon>RezervirajSobu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RezervirajSobuKaoGost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RezervirajSobuKaoGost.Designer.cs">
+      <DependentUpon>RezervirajSobuKaoGost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Soba.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>HotelReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>HotelReservation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tip_zaposlenika.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Uloga.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klase\UlogaKlasa.cs" />
+    <Compile Include="UlogiraniKorisnik.cs" />
+    <Compile Include="UnosOsobnihPodataka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnosOsobnihPodataka.Designer.cs">
+      <DependentUpon>UnosOsobnihPodataka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Upit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposlenik.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AzurirajSobu.resx">
+      <DependentUpon>AzurirajSobu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrisanjeHotela.resx">
+      <DependentUpon>BrisanjeHotela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajHotel.resx">
+      <DependentUpon>DodajHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajSobu.resx">
+      <DependentUpon>DodajSobu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAzurirajHotel.resx">
+      <DependentUpon>FrmAzurirajHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGlavnaFormaAdmin.resx">
+      <DependentUpon>FrmGlavnaFormaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGlavnaFormaGost.resx">
+      <DependentUpon>FrmGlavnaFormaGost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGlavnaFormaZaposlenik.resx">
+      <DependentUpon>FrmGlavnaFormaZaposlenik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpozorenje.resx">
+      <DependentUpon>FrmUpozorenje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzmjenaPodatakaZaposlenikaAdmin.resx">
+      <DependentUpon>IzmjenaPodatakaZaposlenikaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObrisiSobu.resx">
+      <DependentUpon>ObrisiSobu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OdgovorNaUpit.resx">
+      <DependentUpon>OdgovorNaUpit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledHotelaGost.resx">
+      <DependentUpon>PregledHotelaGost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledPrijavaKvarova.resx">
+      <DependentUpon>PregledPrijavaKvarova.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledRecenzija.resx">
+      <DependentUpon>PregledRecenzija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledRezervacija.resx">
+      <DependentUpon>PregledRezervacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledSobaAdmin.resx">
+      <DependentUpon>PregledSobaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledSobaGost.resx">
+      <DependentUpon>PregledSobaGost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledSobaZaposlenik.resx">
+      <DependentUpon>PregledSobaZaposlenik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledSvihHotelaGost.resx">
+      <DependentUpon>PregledSvihHotelaGost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledUpita.resx">
+      <DependentUpon>PregledUpita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledZaposlenika.resx">
+      <DependentUpon>PregledZaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prijava.resx">
+      <DependentUpon>Prijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajZaposlenika.resx">
+      <DependentUpon>DodajZaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izmjena podataka zaposlenika.resx">
+      <DependentUpon>Izmjena podataka zaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostaviUpit.resx">
+      <DependentUpon>PostaviUpit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledHotela.resx">
+      <DependentUpon>PregledHotela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledSoba.resx">
+      <DependentUpon>PregledSoba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrijavaKvara.resx">
+      <DependentUpon>PrijavaKvara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ProvjeraOsobnihPodataka.resx">
+      <DependentUpon>ProvjeraOsobnihPodataka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recenzija.resx">
+      <DependentUpon>Recenzija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecenzijaForma.resx">
+      <DependentUpon>RecenzijaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RezervirajSobu.resx">
+      <DependentUpon>RezervirajSobu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RezervirajSobuKaoGost.resx">
+      <DependentUpon>RezervirajSobuKaoGost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnosOsobnihPodataka.resx">
+      <DependentUpon>UnosOsobnihPodataka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="HotelReservation.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelReservation.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HotelReservation.edmx.diagram">
+      <DependentUpon>HotelReservation.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JadranHoteli.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_password_eye.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_eye_vidljivo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Korisnik.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soba_slika.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HotelReservation.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HotelReservation.Context.cs</LastGenOutput>
+      <DependentUpon>HotelReservation.edmx</DependentUpon>
+    </Content>
+    <Content Include="HotelReservation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelReservation.edmx</DependentUpon>
+      <LastGenOutput>HotelReservation.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\osobniPodaci.png" />
+    <None Include="Resources\rezervirajSobu.png" />
+    <None Include="Resources\avatarSlika.png" />
+    <None Include="Resources\loginSlika.png" />
+    <None Include="Resources\upitSlika.png" />
+    <None Include="Resources\upozorenje.png" />
+    <None Include="Resources\HotelSlikaa.png" />
+    <None Include="Resources\slikaHotel.png" />
+    <None Include="Resources\hotel.png" />
+    <None Include="Resources\zaposlenikSlika.png" />
+    <None Include="Resources\sobaSlika.jpg" />
+    <None Include="Resources\backgorundBlue.png" />
+    <None Include="Resources\backroundRose.png" />
+    <None Include="Resources\iconHome.png" />
+    <None Include="Resources\user-profile.png" />
+    <None Include="Resources\backgroundLogin.jpg" />
+    <None Include="Resources\SlikaHotelaJadran.jpg" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\jadranHoteliSlika.jpg" />
+    <None Include="Resources\rezervacija.png" />
+    <None Include="Resources\recenzija.png" />
+    <None Include="Resources\prijavaKvara.png" />
+    <None Include="Resources\upiti.png" />
+    <None Include="Resources\SlikaHotelaPrava.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BibliotekeVanjske\BibliotekeVanjske.csproj">
+      <Project>{6edadbca-0a0f-4fde-aeaf-62c5d03f4d2d}</Project>
+      <Name>BibliotekeVanjske</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

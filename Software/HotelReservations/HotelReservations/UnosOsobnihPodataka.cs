@@ -124,7 +124,7 @@ namespace Projekt_faza_1
 
                     posiljateljDetalji.Send(mailDetalji);
                     MessageBox.Show("Uspješno!");
-                    this.Close();
+                    this.Hide();
                     FrmGlavnaFormaGost frmGlavnaFormaGost = new FrmGlavnaFormaGost();
                     frmGlavnaFormaGost.ShowDialog();
 

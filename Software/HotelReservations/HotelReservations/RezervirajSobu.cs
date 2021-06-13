@@ -64,6 +64,7 @@ namespace Projekt_faza_1
             ApstraktnaKlasaRezervacija.Datum_dolaska = datumDolaskadateTimePicker.Value;
             ApstraktnaKlasaRezervacija.Datum_odlaska = datumOdlaskadateTimePicker.Value;
             ApstraktnaKlasaRezervacija.Cijena = decimal.Parse(labelCijena.Text);
+            this.Hide();
             UnosOsobnihPodataka unosForma = new UnosOsobnihPodataka();
 
             unosForma.ShowDialog();
@@ -99,8 +100,8 @@ namespace Projekt_faza_1
         {
 
             this.Hide();
-            FrmGlavnaFormaAdmin glavna = new FrmGlavnaFormaAdmin();
-            glavna.ShowDialog();
+            PregledSvihHotelaGost pregled = new PregledSvihHotelaGost();
+            pregled.ShowDialog();
         }
     }
 }

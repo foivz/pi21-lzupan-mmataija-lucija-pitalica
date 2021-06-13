@@ -149,6 +149,8 @@
     <Compile Include="Izvjesce_sadrzi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Klase\HotelKlasa.cs" />
+    <Compile Include="Klase\HotelRepozitorij.cs" />
     <Compile Include="Klase\KorisnikKlasa.cs" />
     <Compile Include="Korisnik.cs">
       <DependentUpon>Model1.tt</DependentUpon>

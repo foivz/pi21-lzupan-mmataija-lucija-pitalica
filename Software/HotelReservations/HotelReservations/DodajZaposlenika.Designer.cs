@@ -51,15 +51,12 @@ namespace Projekt_faza_1
             this.lblDatumRodjenja = new System.Windows.Forms.Label();
             this.lbIIBAN = new System.Windows.Forms.Label();
             this.txtIBAN = new System.Windows.Forms.TextBox();
-            this.labelSlika = new System.Windows.Forms.Label();
             this.lblTipZaposlenika = new System.Windows.Forms.Label();
             this.cbTipZaposlenika = new System.Windows.Forms.ComboBox();
             this.buttonDodajZaposlenika = new System.Windows.Forms.Button();
             this.dtDatumRodjenja = new System.Windows.Forms.DateTimePicker();
             this.roundButtonNatrag = new WindowsFormsApplication1.RoundButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -262,17 +259,6 @@ namespace Projekt_faza_1
             this.txtIBAN.Size = new System.Drawing.Size(238, 24);
             this.txtIBAN.TabIndex = 21;
             // 
-            // labelSlika
-            // 
-            this.labelSlika.AutoSize = true;
-            this.labelSlika.Font = new System.Drawing.Font("Lucida Sans", 12F);
-            this.labelSlika.Location = new System.Drawing.Point(509, 517);
-            this.labelSlika.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSlika.Name = "labelSlika";
-            this.labelSlika.Size = new System.Drawing.Size(132, 23);
-            this.labelSlika.TabIndex = 23;
-            this.labelSlika.Text = "Slika profila:";
-            // 
             // lblTipZaposlenika
             // 
             this.lblTipZaposlenika.AutoSize = true;
@@ -327,14 +313,6 @@ namespace Projekt_faza_1
             this.roundButtonNatrag.UseVisualStyleBackColor = false;
             this.roundButtonNatrag.Click += new System.EventHandler(this.roundButtonNatrag_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(656, 517);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(252, 70);
-            this.pictureBox1.TabIndex = 104;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Projekt_faza_1.Properties.Resources.zaposlenikSlika;
@@ -352,13 +330,11 @@ namespace Projekt_faza_1
             this.BackgroundImage = global::Projekt_faza_1.Properties.Resources.backgroundLogin;
             this.ClientSize = new System.Drawing.Size(931, 728);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.roundButtonNatrag);
             this.Controls.Add(this.dtDatumRodjenja);
             this.Controls.Add(this.buttonDodajZaposlenika);
             this.Controls.Add(this.cbTipZaposlenika);
             this.Controls.Add(this.lblTipZaposlenika);
-            this.Controls.Add(this.labelSlika);
             this.Controls.Add(this.txtIBAN);
             this.Controls.Add(this.lbIIBAN);
             this.Controls.Add(this.lblDatumRodjenja);
@@ -384,7 +360,6 @@ namespace Projekt_faza_1
             this.Name = "DodavanjeZaposlenika";
             this.Text = "Dodavanje zaposlenika";
             this.Load += new System.EventHandler(this.DodavanjeZaposlenika_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -414,13 +389,11 @@ namespace Projekt_faza_1
         private System.Windows.Forms.Label lblDatumRodjenja;
         private System.Windows.Forms.Label lbIIBAN;
         private System.Windows.Forms.TextBox txtIBAN;
-        private System.Windows.Forms.Label labelSlika;
         private System.Windows.Forms.Label lblTipZaposlenika;
         private System.Windows.Forms.ComboBox cbTipZaposlenika;
         private System.Windows.Forms.Button buttonDodajZaposlenika;
         private System.Windows.Forms.DateTimePicker dtDatumRodjenja;
         private WindowsFormsApplication1.RoundButton roundButtonNatrag;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

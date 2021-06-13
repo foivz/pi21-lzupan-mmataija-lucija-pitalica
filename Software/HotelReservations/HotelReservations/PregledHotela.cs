@@ -23,25 +23,31 @@ namespace Projekt_faza_1
 
         private void PregledHotela_Load(object sender, EventArgs e)
         {
-           
+            OsvjeziHotele();
             popisHotelaLabel.BackColor = System.Drawing.Color.Transparent;
         }
         private void OsvjeziHotele()
         {
 
-            
-      
+            dataGridViewHoteli.DataSource = HotelRepozitorij.DohvatiHotele();
+
         }
 
         private void azurirajHotelButton_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+            FrmAzurirajHotel azuriraj = new FrmAzurirajHotel(hotel);
+            azuriraj.ShowDialog();
 
         }
 
         private void buttonPregledSobe_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+            //PregledSobaAdmin pregledaj = new PregledSobaAdmin(hotel);
+            //pregledaj.ShowDialog();
 
         }
 
@@ -54,7 +60,10 @@ namespace Projekt_faza_1
 
         private void obrisiHotelButton_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+            BrisanjeHotela obrisi = new BrisanjeHotela(hotel);
+            obrisi.ShowDialog();
         }
 
         private void buttonOdustani_Click(object sender, EventArgs e)

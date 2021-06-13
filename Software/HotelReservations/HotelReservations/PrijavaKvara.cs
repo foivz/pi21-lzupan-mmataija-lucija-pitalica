@@ -50,6 +50,40 @@ namespace Projekt_faza_1
 
 
                 Klase.RepozitorijPrijavaKvara.DodajPrijavuKvara(prijavaKvara);
+
+                SmtpClient posiljateljDetalji = new SmtpClient();
+                string primatelj = "zaposlenikhotela@gmail.com";
+                string email = hotel.Email.ToString();
+                string posiljatelj = email;
+                string lozinka = hotel.Lozinka.ToString();
+                string posiljateljLozinka = lozinka;
+                string naslov = "Prijava kvara";
+                string sadrzaj = "Pristigla je nova prijava kvara!";
+                string brojPorta = "587";
+                string server = "smtp.gmail.com";
+                posiljateljDetalji.Port = Convert.ToInt32(brojPorta.Trim());
+                posiljateljDetalji.Host = server.Trim();
+                posiljateljDetalji.DeliveryMethod = SmtpDeliveryMethod.Network;
+                posiljateljDetalji.UseDefaultCredentials = false;
+                posiljateljDetalji.Credentials = new NetworkCredential(posiljatelj.Trim(), posiljateljLozinka.Trim());
+                posiljateljDetalji.EnableSsl = true;
+
+                MailMessage mailDetalji = new MailMessage();
+                mailDetalji.From = new MailAddress(posiljatelj.Trim());
+                mailDetalji.To.Add(primatelj.Trim());
+                mailDetalji.Subject = naslov.Trim();
+                mailDetalji.Body = sadrzaj.Trim();
+
+
+                posiljateljDetalji.Send(mailDetalji);
+                PopupNotifier popup = new PopupNotifier();
+                popup.ImageSize = new Size(100, 100);
+                popup.Image = Properties.Resources.prijavaKvara;
+                popup.TitleText = "Prijava kvara";
+                popup.ContentText = "Nova prijava kvara!";
+                popup.Popup();
+
+                this.Hide();
             }
             else {
                 FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriPrijavuKvara(textBoxOIB.Text, textBoxBrojSobe.Text, opis, hotel));

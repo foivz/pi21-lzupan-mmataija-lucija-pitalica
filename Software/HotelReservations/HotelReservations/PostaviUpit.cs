@@ -40,6 +40,43 @@ namespace Projekt_faza_1
                 upit.OIB_hotela = ProsljeđeniHotel.OIB_Hotela;
                 upit.Kontakt = kontakt;
                 Klase.RepozitorijUpit.DodajUpit(upit);
+
+                SmtpClient posiljateljDetalji = new SmtpClient();
+                string primatelj = "zaposlenikhotela@gmail.com";
+                string email = ProsljeđeniHotel.Email.ToString();
+                string posiljatelj = email;
+                string lozinka = ProsljeđeniHotel.Lozinka.ToString();
+                string posiljateljLozinka = lozinka;
+
+                string naslov = "Upit";
+                string sadrzaj = "Imate novi upit!";
+                string brojPorta = "587";
+                string server = "smtp.gmail.com";
+                posiljateljDetalji.Port = Convert.ToInt32(brojPorta.Trim());
+                posiljateljDetalji.Host = server.Trim();
+                posiljateljDetalji.DeliveryMethod = SmtpDeliveryMethod.Network;
+                posiljateljDetalji.UseDefaultCredentials = false;
+                posiljateljDetalji.Credentials = new NetworkCredential(posiljatelj.Trim(), posiljateljLozinka.Trim());
+                posiljateljDetalji.EnableSsl = true;
+
+                MailMessage mailDetalji = new MailMessage();
+                mailDetalji.From = new MailAddress(posiljatelj.Trim());
+                mailDetalji.To.Add(primatelj.Trim());
+                mailDetalji.Subject = naslov.Trim();
+                mailDetalji.Body = sadrzaj.Trim();
+
+
+                posiljateljDetalji.Send(mailDetalji);
+
+                PopupNotifier popup = new PopupNotifier();
+
+                popup.ImageSize = new Size(100, 100);
+                popup.Image = Properties.Resources.upiti;
+                popup.TitleText = "Upit";
+                popup.ContentText = "Imate neodgovoreni upit!";
+                popup.Popup();
+
+
                 this.Hide();
                 FrmGlavnaFormaGost glavna = new FrmGlavnaFormaGost();
                 glavna.ShowDialog();

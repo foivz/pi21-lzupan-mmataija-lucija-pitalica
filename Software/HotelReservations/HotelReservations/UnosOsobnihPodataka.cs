@@ -99,7 +99,7 @@ namespace Projekt_faza_1
                 {
                     HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoRezervaciji();
                     SmtpClient posiljateljDetalji = new SmtpClient();
-                    //smisli kako prosljedit
+                    
                     string primatelj = "zaposlenikhotela@gmail.com";
                     string posiljatelj = "reservationsdreamteam@gmail.com";
                     string posiljateljLozinka = "dreamteam1234";

@@ -26,7 +26,9 @@ namespace Projekt_faza_1
 
         private void ButtonPretraziHotele_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            PregledSvihHotelaGost pregled = new PregledSvihHotelaGost();
+            pregled.ShowDialog();
 
         }
 

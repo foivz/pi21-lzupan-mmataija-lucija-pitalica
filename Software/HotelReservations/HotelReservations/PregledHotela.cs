@@ -73,7 +73,10 @@ namespace Projekt_faza_1
         
         private void buttonPregledajZaposlenika_Click(object sender, EventArgs e)
         {
-          
+            this.Hide();
+            HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+            PregledZaposlenika pregledaj = new PregledZaposlenika(hotel);
+            pregledaj.ShowDialog();
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)

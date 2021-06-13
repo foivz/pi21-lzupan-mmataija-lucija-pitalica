@@ -154,6 +154,11 @@
     <Compile Include="Klase\KorisnikKlasa.cs" />
     <Compile Include="Klase\RepozitorijSoba.cs" />
     <Compile Include="Klase\SobaKlasa.cs" />
+    <Compile Include="Klase\TipZaposlenikaKlasa.cs" />
+    <Compile Include="Klase\ZaposlenikKlasa.cs" />
+    <Compile Include="Klase\ZaposlenikRepozitorij.cs" />
+    <Compile Include="Klase\ZaposlenKlasa.cs" />
+    <Compile Include="Klase\ZaposlenRepozitorij.cs" />
     <Compile Include="Korisnik.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

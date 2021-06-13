@@ -302,7 +302,79 @@ namespace Projekt_faza_1
             return postojiSoba;
         }
 
+        public static string ProvjeriDodavanjeIzmjenuZaposlenikaDodavanje(string OIB_zaposlenika, string ime, string prezime, string datum_rodjenja, string email, string adresa, string telefon, string korisnicko_ime, string lozinka, string IBAN, string tip_zaposlenika)
+        {
 
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriOIB(OIB_zaposlenika);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIme(ime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriPrezime(prezime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriDatumRodjenja(datum_rodjenja);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriEmail(email);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriAdresu(adresa);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriTelefon(telefon);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKorisnickoIme(korisnicko_ime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriLozinku(lozinka);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIBAN(IBAN);
+
+            return povratnaPoruka;
+        }
+        public static string ProvjeriDodavanjeIzmjenuZaposlenika(List<TextBox> lista)
+        {
+            string IBAN = "";
+            int OIB_zaposlenika = 0;
+            string povratnaPoruka = "";
+
+            foreach (TextBox unos in lista)
+            {
+                if (unos.Name == "txtIBAN")
+                {
+                    IBAN = unos.Text;
+                    povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIBAN(unos.Text);
+                }
+                if (unos.Name == "txtOIB")
+                {
+                    OIB_zaposlenika = int.Parse(unos.Text);
+                    povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriOIB(unos.Text);
+                }
+
+            }
+         
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriDodavanjeIzmjenuZaposlenika(int OIB_zaposlenika, string IBAN)
+        {
+            bool postojiZaposlenik = false;
+            List<ZaposlenikKlasa> lista = new List<ZaposlenikKlasa>();
+            string sqlUpit = $"SELECT * FROM Zaposlenik";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                ZaposlenikKlasa zaposlenik = ZaposlenikRepozitorij.DohvatiZaposlenika(dr);
+                lista.Add(zaposlenik);
+            }
+            dr.Close();
+            foreach (ZaposlenikKlasa zaposlenik in lista)
+            {
+                if (zaposlenik.OIB_zaposlenika == OIB_zaposlenika || zaposlenik.IBAN == IBAN)
+                {
+                    postojiZaposlenik = true;
+                }
+            }
+            return postojiZaposlenik;
+        }
+        public static string ProvjeriIzmjenuZaposlenika(string adresa, string email, string iban, string telefon, string prezime, string lozinkaNova)
+        {
+
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriAdresu(adresa);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriEmail(email);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIBAN(iban);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriTelefon(telefon);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriPrezime(prezime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriLozinku(lozinkaNova);
+            return povratnaPoruka;
+        }
 
 
 

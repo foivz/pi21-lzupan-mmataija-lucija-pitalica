@@ -59,7 +59,7 @@ namespace Projekt_faza_1
 
         private void buttonDodajZaposlenika_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void buttonPregledRezervacija_Click(object sender, EventArgs e)

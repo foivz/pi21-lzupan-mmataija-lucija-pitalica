@@ -152,6 +152,8 @@
     <Compile Include="Klase\HotelKlasa.cs" />
     <Compile Include="Klase\HotelRepozitorij.cs" />
     <Compile Include="Klase\KorisnikKlasa.cs" />
+    <Compile Include="Klase\PrijavaKvaraKlasa.cs" />
+    <Compile Include="Klase\RepozitorijPrijavaKvara.cs" />
     <Compile Include="Klase\RepozitorijSoba.cs" />
     <Compile Include="Klase\SobaKlasa.cs" />
     <Compile Include="Klase\TipZaposlenikaKlasa.cs" />

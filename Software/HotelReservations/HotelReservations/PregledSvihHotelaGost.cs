@@ -20,12 +20,18 @@ namespace Projekt_faza_1
 
         private void PregledSvihHotelaGost_Load(object sender, EventArgs e)
         {
-          
+            dataGridViewHoteli.DataSource = HotelRepozitorij.DohvatiHotele();
         }
 
         private void buttonPregledSobe_Click(object sender, EventArgs e)
         {
-           
+            if (dataGridViewHoteli.SelectedRows.Count == 1)
+            {
+                this.Hide();
+                HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+                PregledSoba formaPregledSoba = new PregledSoba(hotel);
+                formaPregledSoba.ShowDialog();
+            }
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)

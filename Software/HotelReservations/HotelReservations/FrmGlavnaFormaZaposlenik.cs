@@ -68,7 +68,10 @@ namespace Projekt_faza_1
 
         private void buttonPregledKvarova_Click(object sender, EventArgs e)
         {
-          
+            this.Hide();
+            PregledPrijavaKvarova pregledKvarova = new PregledPrijavaKvarova();
+            pregledKvarova.ShowDialog();
+
         }
 
         private void buttonMojProfil_Click(object sender, EventArgs e)

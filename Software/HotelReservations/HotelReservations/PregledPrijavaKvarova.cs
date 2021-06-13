@@ -20,9 +20,12 @@ namespace Projekt_faza_1
 
         private void PregledPrijavaKvarova_Load(object sender, EventArgs e)
         {
-           
+
+
+            ZaposlenikKlasa zaposlenik = ZaposlenikRepozitorij.DohvatiZaposlenikaPoImenu(UlogiraniKorisnik.Korisnicko_ime, UlogiraniKorisnik.Lozinka);
+            HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoZaposlenikovomImenu(UlogiraniKorisnik.Lozinka, UlogiraniKorisnik.Korisnicko_ime);
             dataGridViewPrijavljeniKvarovi.DataSource = null;
-          
+            dataGridViewPrijavljeniKvarovi.DataSource = RepozitorijPrijavaKvara.DohvatiPrijavePoHotelu(hotel);
             labelPrijavljeniKvarovi.BackColor = System.Drawing.Color.Transparent;
         }
 

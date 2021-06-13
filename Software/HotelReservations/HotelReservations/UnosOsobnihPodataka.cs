@@ -166,7 +166,7 @@ namespace Projekt_faza_1
                     mailDetalji.Body = sadrzaj.Trim();
 
 
-                    posiljateljDetalji.Send(mailDetalji);
+                    posiljateljDetalji.Send(mailDetalji);s
                     MessageBox.Show("Uspješno!");
 
                 }

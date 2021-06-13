@@ -69,7 +69,7 @@ namespace Projekt_faza_1
 
         private void RecenzijaForma_Load(object sender, EventArgs e)
         {
-          
+            comboBoxAdresaiNaziv.DataSource = HotelRepozitorij.DohvatiHotele();
             pictureBox1.BackColor = System.Drawing.Color.Transparent;
             naslovLabel.BackColor = System.Drawing.Color.Transparent;
             labelOib.BackColor = System.Drawing.Color.Transparent;

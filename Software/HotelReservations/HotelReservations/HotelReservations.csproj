@@ -152,6 +152,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Klase\GostKlasa.cs" />
+    <Compile Include="Klase\GostRepozitorij.cs" />
     <Compile Include="Klase\HotelKlasa.cs" />
     <Compile Include="Klase\HotelRepozitorij.cs" />
     <Compile Include="Klase\KorisnikKlasa.cs" />

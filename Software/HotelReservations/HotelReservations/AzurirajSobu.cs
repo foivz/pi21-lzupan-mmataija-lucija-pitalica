@@ -32,6 +32,7 @@ namespace Projekt_faza_1
             string sadrzaj = sadrzajSobeTextBox.Text;
             string sadrzajKupaonice = sadrzajKupaoniceTextBox.Text;
             string napomena = textBoxNapomene.Text;
+            decimal cijena = decimal.Parse(textBoxCijena.Text);
             if (ProvjeraKorisnickogUnosa.ProvjeriIzmjenuSobe(SobaProsljedjena.ID_soba, SobaProsljedjena.Broj_sobe, HotelProslijedeni, broj, velicina, kapacitet, sadrzaj, napomena, nazivHotela, sadrzajKupaonice) == "")
             {
 
@@ -44,6 +45,7 @@ namespace Projekt_faza_1
                 soba.Sadrzaj_kupaonice = sadrzajKupaonice;
                 soba.Napomene = napomena;
                 soba.OIB_hotela = nazivHotela;
+                soba.Cijena = cijena;
                 RepozitorijSoba.IzmijeniSobu(soba);
                 if (UlogiraniKorisnik.Uloga_id == 1)
                 {
@@ -81,6 +83,7 @@ namespace Projekt_faza_1
             sadrzajSobeTextBox.Text = SobaProsljedjena.Sadrzaj_sobe;
             sadrzajKupaoniceTextBox.Text = SobaProsljedjena.Sadrzaj_kupaonice;
             textBoxNapomene.Text = SobaProsljedjena.Napomene;
+            textBoxCijena.Text = SobaProsljedjena.Cijena.ToString();
             dodajSobuLabel.BackColor = System.Drawing.Color.Transparent;
             brojSobeLabel.BackColor = System.Drawing.Color.Transparent;
             oibHotelLabel.BackColor = System.Drawing.Color.Transparent;

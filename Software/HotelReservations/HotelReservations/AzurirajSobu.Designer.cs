@@ -46,6 +46,8 @@ namespace Projekt_faza_1
             this.dodajSobuLabel = new System.Windows.Forms.Label();
             this.textBoxHotel = new System.Windows.Forms.TextBox();
             this.roundButtonNatrag = new WindowsFormsApplication1.RoundButton();
+            this.labelCijena = new System.Windows.Forms.Label();
+            this.textBoxCijena = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxNapomene
@@ -222,12 +224,34 @@ namespace Projekt_faza_1
             this.roundButtonNatrag.UseVisualStyleBackColor = false;
             this.roundButtonNatrag.Click += new System.EventHandler(this.roundButtonNatrag_Click);
             // 
+            // labelCijena
+            // 
+            this.labelCijena.AutoSize = true;
+            this.labelCijena.Font = new System.Drawing.Font("Lucida Sans", 12F);
+            this.labelCijena.Location = new System.Drawing.Point(121, 601);
+            this.labelCijena.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCijena.Name = "labelCijena";
+            this.labelCijena.Size = new System.Drawing.Size(78, 23);
+            this.labelCijena.TabIndex = 103;
+            this.labelCijena.Text = "Cijena:";
+            // 
+            // textBoxCijena
+            // 
+            this.textBoxCijena.Location = new System.Drawing.Point(254, 604);
+            this.textBoxCijena.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxCijena.Multiline = true;
+            this.textBoxCijena.Name = "textBoxCijena";
+            this.textBoxCijena.Size = new System.Drawing.Size(424, 60);
+            this.textBoxCijena.TabIndex = 104;
+            // 
             // AzurirajSobu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Projekt_faza_1.Properties.Resources.backgorundBlue;
             this.ClientSize = new System.Drawing.Size(776, 813);
+            this.Controls.Add(this.textBoxCijena);
+            this.Controls.Add(this.labelCijena);
             this.Controls.Add(this.roundButtonNatrag);
             this.Controls.Add(this.textBoxHotel);
             this.Controls.Add(this.textBoxNapomene);
@@ -273,5 +297,7 @@ namespace Projekt_faza_1
         private System.Windows.Forms.Label dodajSobuLabel;
         private System.Windows.Forms.TextBox textBoxHotel;
         private WindowsFormsApplication1.RoundButton roundButtonNatrag;
+        private System.Windows.Forms.Label labelCijena;
+        private System.Windows.Forms.TextBox textBoxCijena;
     }
 }

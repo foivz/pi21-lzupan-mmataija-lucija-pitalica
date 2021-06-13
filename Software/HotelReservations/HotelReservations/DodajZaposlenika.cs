@@ -41,7 +41,7 @@ namespace Projekt_faza_1
             {
                 ZaposlenikKlasa zaposlenik = new ZaposlenikKlasa();
                 zaposlenik.OIB_zaposlenika = int.Parse(OIB_zaposlenika);
-                zaposlenik.OIB_hotela = hotel;
+                zaposlenik.OIB_hotela = ProsljeđeniHotel.OIB_Hotela;
                 zaposlenik.Ime = ime;
                 zaposlenik.Prezime = prezime;
                 zaposlenik.Datum_rodjenja = datum;

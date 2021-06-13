@@ -48,7 +48,10 @@ namespace Projekt_faza_1
 
         private void prikazSobaButton_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            PregledSobaZaposlenik pregledSobaZaposlenik = new PregledSobaZaposlenik();
+            pregledSobaZaposlenik.ShowDialog();
+            
         }
 
         private void buttonOdjaviSe_Click(object sender, EventArgs e)

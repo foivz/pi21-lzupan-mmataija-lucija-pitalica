@@ -21,11 +21,14 @@ namespace Projekt_faza_1
 
         private void PregledSobaZaposlenik_Load(object sender, EventArgs e)
         {
-     
+            HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoZaposlenikovomImenu(UlogiraniKorisnik.Lozinka, UlogiraniKorisnik.Korisnicko_ime);
+
+            dataGridViewSoba.DataSource = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
             popisSobaLabel.BackColor = System.Drawing.Color.Transparent;
             labelKapacitet.BackColor = System.Drawing.Color.Transparent;
             labelNazivHotela.BackColor = System.Drawing.Color.Transparent;
-    
+            comboBoxHotel.Text = hotel.Naziv_hotel;
+            comboBoxHotel.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -48,7 +51,15 @@ namespace Projekt_faza_1
 
         private void azurirajSobuButton_Click(object sender, EventArgs e)
         {
-          
+
+            if (dataGridViewSoba.SelectedRows.Count == 1)
+            {
+                SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+                HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoZaposlenikovomImenu(UlogiraniKorisnik.Lozinka, UlogiraniKorisnik.Korisnicko_ime);
+                AzurirajSobu azurirajSobu = new AzurirajSobu(soba, hotel);
+                this.Hide();
+                azurirajSobu.ShowDialog();
+            }
         }
 
         private void dodajSobuButton_Click(object sender, EventArgs e)
@@ -60,7 +71,13 @@ namespace Projekt_faza_1
 
         private void obrisiSobuButton_Click(object sender, EventArgs e)
         {
-         
+            if (dataGridViewSoba.SelectedRows.Count == 1)
+            {
+                SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+                ObrisiSobu obrisiSobu = new ObrisiSobu(soba);
+                this.Hide();
+                obrisiSobu.ShowDialog();
+            }
         }
     }
 }

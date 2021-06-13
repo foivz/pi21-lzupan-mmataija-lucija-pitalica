@@ -74,7 +74,7 @@ namespace Projekt_faza_1
                 hotel.Adresa = adresaTextBox.Text;
                 hotel.Email = emailTextBox.Text;
                 hotel.Kapacitet = int.Parse(kapacitetTextBox.Text);
-                //Klase.HotelRepozitorij.ObrisiHotel(hotel, korisnik_id);
+                Klase.HotelRepozitorij.ObrisiHotel(hotel, korisnik_id);
                 this.Hide();
                 PregledHotela pregled = new PregledHotela();
                 pregled.ShowDialog();

@@ -60,7 +60,9 @@ namespace Projekt_faza_1
 
         private void buttonPregledUpita_Click(object sender, EventArgs e)
         {
-          
+            this.Hide();
+            PregledUpita pregledUpita = new PregledUpita();
+            pregledUpita.ShowDialog();
         }
 
         private void buttonPregledKvarova_Click(object sender, EventArgs e)

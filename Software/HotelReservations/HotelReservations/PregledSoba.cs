@@ -104,7 +104,9 @@ namespace Projekt_faza_1
 
         private void buttonUpit_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            PostaviUpit postaviUpit = new PostaviUpit(ProsljeđeniHotel);
+            postaviUpit.ShowDialog();
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)

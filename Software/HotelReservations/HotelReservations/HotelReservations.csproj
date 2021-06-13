@@ -159,11 +159,13 @@
     <Compile Include="Klase\RepozitorijPrijavaKvara.cs" />
     <Compile Include="Klase\RepozitorijRezervacijaGost.cs" />
     <Compile Include="Klase\RepozitorijSoba.cs" />
+    <Compile Include="Klase\RepozitorijUpit.cs" />
     <Compile Include="Klase\RezervacijaGost.cs" />
     <Compile Include="Klase\RezervacijaKlasa.cs" />
     <Compile Include="Klase\RezervacijaRepozitorij.cs" />
     <Compile Include="Klase\SobaKlasa.cs" />
     <Compile Include="Klase\TipZaposlenikaKlasa.cs" />
+    <Compile Include="Klase\UpitKlasa.cs" />
     <Compile Include="Klase\ZaposlenikKlasa.cs" />
     <Compile Include="Klase\ZaposlenikRepozitorij.cs" />
     <Compile Include="Klase\ZaposlenKlasa.cs" />

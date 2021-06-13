@@ -93,7 +93,12 @@ namespace Projekt_faza_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            string uvjet = "OIB_Hotela";
+            string sadrzaj = Soba.OIB_hotela.ToString();
+            List<HotelKlasa> lista = HotelRepozitorij.DohvatiFiltriraneHotele(uvjet, sadrzaj);
+            HotelKlasa hotel = lista[0];
+            PostaviUpit postaviUpit = new PostaviUpit(hotel);
+            postaviUpit.ShowDialog();
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)

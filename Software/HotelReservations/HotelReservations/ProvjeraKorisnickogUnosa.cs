@@ -482,5 +482,14 @@ namespace Projekt_faza_1
             return premaseno;
 
         }
+        public static string ProvjeriDodavanjeUpita(string opis, string kontakt)
+        {
+
+            string povratnaPoruka = "";
+
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriSadrzaj(opis);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriEmail(kontakt);
+            return povratnaPoruka;
+        }
     }
 }

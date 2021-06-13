@@ -41,10 +41,10 @@ namespace Projekt_faza_1
             // 
             this.buttonPregledSobe.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonPregledSobe.Font = new System.Drawing.Font("Lucida Sans", 12F);
-            this.buttonPregledSobe.Location = new System.Drawing.Point(761, 282);
-            this.buttonPregledSobe.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPregledSobe.Location = new System.Drawing.Point(1015, 347);
+            this.buttonPregledSobe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPregledSobe.Name = "buttonPregledSobe";
-            this.buttonPregledSobe.Size = new System.Drawing.Size(126, 52);
+            this.buttonPregledSobe.Size = new System.Drawing.Size(168, 64);
             this.buttonPregledSobe.TabIndex = 13;
             this.buttonPregledSobe.Text = "Pregledaj sobe";
             this.buttonPregledSobe.UseVisualStyleBackColor = false;
@@ -54,12 +54,12 @@ namespace Projekt_faza_1
             // 
             this.dataGridViewHoteli.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewHoteli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewHoteli.Location = new System.Drawing.Point(57, 100);
-            this.dataGridViewHoteli.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewHoteli.Location = new System.Drawing.Point(76, 123);
+            this.dataGridViewHoteli.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewHoteli.Name = "dataGridViewHoteli";
             this.dataGridViewHoteli.RowHeadersWidth = 51;
             this.dataGridViewHoteli.RowTemplate.Height = 24;
-            this.dataGridViewHoteli.Size = new System.Drawing.Size(830, 152);
+            this.dataGridViewHoteli.Size = new System.Drawing.Size(1107, 187);
             this.dataGridViewHoteli.TabIndex = 9;
             this.dataGridViewHoteli.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHoteli_CellContentClick);
             // 
@@ -68,10 +68,9 @@ namespace Projekt_faza_1
             this.popisHotelaLabel.AutoSize = true;
             this.popisHotelaLabel.BackColor = System.Drawing.Color.White;
             this.popisHotelaLabel.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Bold);
-            this.popisHotelaLabel.Location = new System.Drawing.Point(398, 50);
-            this.popisHotelaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.popisHotelaLabel.Location = new System.Drawing.Point(531, 62);
             this.popisHotelaLabel.Name = "popisHotelaLabel";
-            this.popisHotelaLabel.Size = new System.Drawing.Size(141, 23);
+            this.popisHotelaLabel.Size = new System.Drawing.Size(167, 28);
             this.popisHotelaLabel.TabIndex = 8;
             this.popisHotelaLabel.Text = "Popis hotela";
             // 
@@ -79,10 +78,10 @@ namespace Projekt_faza_1
             // 
             this.roundButtonNatrag.BackColor = System.Drawing.Color.SteelBlue;
             this.roundButtonNatrag.Font = new System.Drawing.Font("Lucida Sans", 10.8F, System.Drawing.FontStyle.Bold);
-            this.roundButtonNatrag.Location = new System.Drawing.Point(57, 289);
-            this.roundButtonNatrag.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButtonNatrag.Location = new System.Drawing.Point(76, 356);
+            this.roundButtonNatrag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.roundButtonNatrag.Name = "roundButtonNatrag";
-            this.roundButtonNatrag.Size = new System.Drawing.Size(41, 39);
+            this.roundButtonNatrag.Size = new System.Drawing.Size(55, 48);
             this.roundButtonNatrag.TabIndex = 104;
             this.roundButtonNatrag.Text = "<";
             this.roundButtonNatrag.UseVisualStyleBackColor = false;
@@ -92,27 +91,27 @@ namespace Projekt_faza_1
             // 
             this.buttonPostaviUpit.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonPostaviUpit.Font = new System.Drawing.Font("Lucida Sans", 12F);
-            this.buttonPostaviUpit.Location = new System.Drawing.Point(620, 285);
-            this.buttonPostaviUpit.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPostaviUpit.Location = new System.Drawing.Point(838, 351);
+            this.buttonPostaviUpit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPostaviUpit.Name = "buttonPostaviUpit";
-            this.buttonPostaviUpit.Size = new System.Drawing.Size(128, 46);
-            this.buttonPostaviUpit.TabIndex = 124;
+            this.buttonPostaviUpit.Size = new System.Drawing.Size(171, 57);
+            this.buttonPostaviUpit.TabIndex = 126;
             this.buttonPostaviUpit.Text = "Postavi upit";
             this.buttonPostaviUpit.UseVisualStyleBackColor = false;
             this.buttonPostaviUpit.Click += new System.EventHandler(this.buttonPostaviUpit_Click);
             // 
             // PregledHotelaGost
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Projekt_faza_1.Properties.Resources.backgroundLogin;
-            this.ClientSize = new System.Drawing.Size(955, 379);
+            this.ClientSize = new System.Drawing.Size(1273, 466);
             this.Controls.Add(this.buttonPostaviUpit);
             this.Controls.Add(this.roundButtonNatrag);
             this.Controls.Add(this.buttonPregledSobe);
             this.Controls.Add(this.dataGridViewHoteli);
             this.Controls.Add(this.popisHotelaLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PregledHotelaGost";
             this.Text = "Pregled hotela";
             this.Load += new System.EventHandler(this.PregledHotelaGost_Load);

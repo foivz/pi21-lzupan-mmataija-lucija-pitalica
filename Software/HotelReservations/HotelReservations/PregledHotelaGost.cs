@@ -61,7 +61,10 @@ namespace Projekt_faza_1
 
         private void buttonPostaviUpit_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            HotelKlasa selektiraniHotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
+            PostaviUpit postaviUpit = new PostaviUpit(selektiraniHotel);
+            postaviUpit.ShowDialog();
         }
     }
 }

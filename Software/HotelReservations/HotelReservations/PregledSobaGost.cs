@@ -65,7 +65,9 @@ namespace Projekt_faza_1
 
         private void buttonPostaviUpit_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            PostaviUpit postaviUpit = new PostaviUpit(ProsljedeniHotel);
+            postaviUpit.ShowDialog();
         }
 
         private void label1_Click(object sender, EventArgs e)

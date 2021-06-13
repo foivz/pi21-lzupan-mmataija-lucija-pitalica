@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekt_faza_1.Klase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,11 @@ namespace Projekt_faza_1
 {
     public partial class PostaviUpit : Form
     {
-       
-        public PostaviUpit()
+        public Klase.HotelKlasa ProsljeđeniHotel { get; set; }
+        public PostaviUpit(Klase.HotelKlasa hotel)
         {
             InitializeComponent();
-           
+            ProsljeđeniHotel = hotel;
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
@@ -29,15 +30,31 @@ namespace Projekt_faza_1
 
         private void btnPosalji_Click(object sender, EventArgs e)
         {
-           
-            
+            string opis = upitTextBox.Text;
+            string kontakt = textBoxEmail.Text;
+            if (ProvjeraKorisnickogUnosa.ProvjeriDodavanjeUpita(opis, kontakt) == "")
+            {
+                UpitKlasa upit = new UpitKlasa();
+                upit.Opis = opis;
+                upit.Datum_i_vrijeme_postavljanja_upita = DateTime.Now;
+                upit.OIB_hotela = ProsljeđeniHotel.OIB_Hotela;
+                upit.Kontakt = kontakt;
+                Klase.RepozitorijUpit.DodajUpit(upit);
+                this.Hide();
+                FrmGlavnaFormaGost glavna = new FrmGlavnaFormaGost();
+                glavna.ShowDialog();
+            }
+            else
+            {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriDodavanjeUpita(opis, kontakt));
+                frmUpozorenje.ShowDialog();
+            }
         }
-
         private void roundButtonNatrag_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FrmGlavnaFormaAdmin glavna = new FrmGlavnaFormaAdmin();
-            glavna.ShowDialog();
+            FrmGlavnaFormaGost pregled = new FrmGlavnaFormaGost();
+            pregled.ShowDialog();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

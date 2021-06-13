@@ -67,6 +67,7 @@ namespace Projekt_faza_1
 
         private void PrijavaKvara_Load(object sender, EventArgs e)
         {
+            comboBoxHotel.DataSource = HotelRepozitorij.DohvatiHotele();
             pictureBox1.BackColor = System.Drawing.Color.Transparent;
             naslovLabel.BackColor = System.Drawing.Color.Transparent;
             labelOIBGosta.BackColor = System.Drawing.Color.Transparent;

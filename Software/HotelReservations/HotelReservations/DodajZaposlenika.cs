@@ -84,6 +84,7 @@ namespace Projekt_faza_1
         private void DodavanjeZaposlenika_Load(object sender, EventArgs e)
         {
             cbTipZaposlenika.DataSource = null;
+            cbTipZaposlenika.DataSource = ZaposlenikRepozitorij.DohvatiTipZaposlenika().ToList();
             lblOIB.BackColor = System.Drawing.Color.Transparent;
             lblIme.BackColor = System.Drawing.Color.Transparent;
             lblPrezime.BackColor = System.Drawing.Color.Transparent;

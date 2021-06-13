@@ -16,21 +16,21 @@ namespace Projekt_faza_1
         public Klase.HotelKlasa ProsljeđeniHotel { get; set; }
         public PregledZaposlenika(Klase.HotelKlasa hotel)
         {
+            
                 InitializeComponent();
                 ProsljeđeniHotel = hotel;
+            
         }
 
         private void PregledZaposlenika_Load(object sender, EventArgs e)
         {
             DohvatiZaposlenikeUDataGrid();
-            pregledZaposlenikaLabel.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void DohvatiZaposlenikeUDataGrid()
         {
-            dataGridViewZaposlenik.DataSource = null;
             dataGridViewZaposlenik.DataSource = ZaposlenikRepozitorij.DohvatiZaposlenikePoHotelu(ProsljeđeniHotel).ToList();
-
+            
         }
 
         private void buttonOdustani_Click(object sender, EventArgs e)
@@ -52,17 +52,23 @@ namespace Projekt_faza_1
 
         private void azurirajPodatkeButton_Click(object sender, EventArgs e)
         {
-            if (dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa != null)
-            {
-                this.Hide();
-                IzmjenaPodatakaZaposlenikaAdmin formaIzmjena = new IzmjenaPodatakaZaposlenikaAdmin(dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa);
-                formaIzmjena.ShowDialog();
-            }
+            this.Hide();
         }
 
         private void obrisiZaposlenikaButton_Click(object sender, EventArgs e)
         {
-          
+<<<<<<< Updated upstream:Software/Projekt_faza_1/PregledZaposlenika.cs
+            this.Hide();
+=======
+            if (dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa != null)
+            {
+                ZaposlenikKlasa zaposlenikOdabrani = dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa;
+                ZaposlenikRepozitorij.ObrisiZaposlenika(zaposlenikOdabrani);
+
+                ZaposlenRepozitorij.IzbrisiZaposlen(zaposlenikOdabrani.ID_zaposlenik);
+                DohvatiZaposlenikeUDataGrid();
+            }
+>>>>>>> Stashed changes:Software/HotelReservations/HotelReservations/PregledZaposlenika.cs
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)
@@ -70,8 +76,6 @@ namespace Projekt_faza_1
             this.Hide();
             PregledHotela pregled = new PregledHotela();
             pregled.ShowDialog();
-            
-
         }
     }
 }

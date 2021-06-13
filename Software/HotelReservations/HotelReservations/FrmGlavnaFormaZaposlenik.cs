@@ -25,7 +25,9 @@ namespace Projekt_faza_1
 
         private void buttonPregledRezervacija_Click(object sender, EventArgs e)
         {
-         
+            this.Hide();
+            PregledRezervacija pregledRezervacija = new PregledRezervacija();
+            pregledRezervacija.ShowDialog();
 
         }
 

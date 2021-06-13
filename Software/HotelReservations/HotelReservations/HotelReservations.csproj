@@ -157,7 +157,9 @@
     <Compile Include="Klase\KorisnikKlasa.cs" />
     <Compile Include="Klase\PrijavaKvaraKlasa.cs" />
     <Compile Include="Klase\RepozitorijPrijavaKvara.cs" />
+    <Compile Include="Klase\RepozitorijRezervacijaGost.cs" />
     <Compile Include="Klase\RepozitorijSoba.cs" />
+    <Compile Include="Klase\RezervacijaGost.cs" />
     <Compile Include="Klase\RezervacijaKlasa.cs" />
     <Compile Include="Klase\RezervacijaRepozitorij.cs" />
     <Compile Include="Klase\SobaKlasa.cs" />

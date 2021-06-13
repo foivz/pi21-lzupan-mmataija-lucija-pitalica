@@ -31,7 +31,6 @@ namespace Projekt_faza_1
         {
             this.pretraziButton = new System.Windows.Forms.Button();
             this.buttonDodajHotel = new System.Windows.Forms.Button();
-            this.buttonPregledRezervacija = new System.Windows.Forms.Button();
             this.buttonPrijaviSe = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,24 +62,11 @@ namespace Projekt_faza_1
             this.buttonDodajHotel.UseVisualStyleBackColor = true;
             this.buttonDodajHotel.Click += new System.EventHandler(this.buttonDodajHotel_Click);
             // 
-            // buttonPregledRezervacija
-            // 
-            this.buttonPregledRezervacija.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonPregledRezervacija.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F);
-            this.buttonPregledRezervacija.Location = new System.Drawing.Point(405, 291);
-            this.buttonPregledRezervacija.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonPregledRezervacija.Name = "buttonPregledRezervacija";
-            this.buttonPregledRezervacija.Size = new System.Drawing.Size(107, 65);
-            this.buttonPregledRezervacija.TabIndex = 11;
-            this.buttonPregledRezervacija.Text = "Pregled rezervacija";
-            this.buttonPregledRezervacija.UseVisualStyleBackColor = true;
-            this.buttonPregledRezervacija.Click += new System.EventHandler(this.buttonPregledRezervacija_Click);
-            // 
             // buttonPrijaviSe
             // 
             this.buttonPrijaviSe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPrijaviSe.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrijaviSe.Location = new System.Drawing.Point(517, 289);
+            this.buttonPrijaviSe.Location = new System.Drawing.Point(406, 288);
             this.buttonPrijaviSe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPrijaviSe.Name = "buttonPrijaviSe";
             this.buttonPrijaviSe.Size = new System.Drawing.Size(120, 65);
@@ -93,7 +79,7 @@ namespace Projekt_faza_1
             // 
             this.pictureBox1.Image = global::Projekt_faza_1.Properties.Resources.JadranHoteli;
             this.pictureBox1.Location = new System.Drawing.Point(1, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(316, 156);
             this.pictureBox1.TabIndex = 13;
@@ -107,7 +93,6 @@ namespace Projekt_faza_1
             this.ClientSize = new System.Drawing.Size(763, 369);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonPrijaviSe);
-            this.Controls.Add(this.buttonPregledRezervacija);
             this.Controls.Add(this.buttonDodajHotel);
             this.Controls.Add(this.pretraziButton);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -122,7 +107,6 @@ namespace Projekt_faza_1
         #endregion
         private System.Windows.Forms.Button pretraziButton;
         private System.Windows.Forms.Button buttonDodajHotel;
-        private System.Windows.Forms.Button buttonPregledRezervacija;
         private System.Windows.Forms.Button buttonPrijaviSe;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

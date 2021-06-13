@@ -49,7 +49,7 @@ namespace Projekt_faza_1
             RezervirajSobu pregled = new RezervirajSobu(sobaIzabrana, DatumDolaska, DatumOdlaska);
             pregled.ShowDialog();
         }
-    }
+    
 
         private void buttonUpit_Click(object sender, EventArgs e)
         {

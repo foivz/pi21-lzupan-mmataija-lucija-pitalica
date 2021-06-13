@@ -68,7 +68,117 @@ namespace Projekt_faza_1
             string datum_rodjenja = datumRodjenjaDateTimePicker.ToString();
 
             DateTime datum = DateTime.Parse(datumRodjenjaDateTimePicker.Text);
-          
+            if (ProvjeraKorisnickogUnosa.ProvjeriDodavanjeIzmjenuGosta(OIB_gosta, ime, prezime, IBAN, telefon, email, adresa, drzavljanstvo, covid_test, datum_rodjenja) == "")
+            {
+                GostKlasa gost = new GostKlasa();
+                SobaKlasa soba = new SobaKlasa();
+                soba.ID_soba = ApstraktnaKlasaRezervacija.ID_soba;
+                gost.OIB_gost = int.Parse(OIB_gosta);
+                gost.Ime = ime;
+                gost.Prezime = prezime;
+                gost.IBAN = IBAN;
+                gost.Telefon = telefon;
+                gost.Email = email;
+                gost.Adresa = adresa;
+                gost.Drzavljanstvo = drzavljanstvo;
+                gost.Covid_test = covid_test;
+                gost.Datum_rodjenja = datum;
+                GostRepozitorij.DodajGosta(gost);
+                RezervacijaKlasa rezervacija = new RezervacijaKlasa();
+                rezervacija.Id_soba = ApstraktnaKlasaRezervacija.ID_soba;
+                rezervacija.Cijena = ApstraktnaKlasaRezervacija.Cijena;
+                rezervacija.Datum_dolaska = ApstraktnaKlasaRezervacija.Datum_dolaska;
+                rezervacija.Datum_odlaska = ApstraktnaKlasaRezervacija.Datum_odlaska;
+                rezervacija.Datum_rezervacije = ApstraktnaKlasaRezervacija.Datum_rezervacije;
+                rezervacija.OIB_gosta = gost.OIB_gost;
+                RezervacijaRepozitorij.DodajRezervaciju(rezervacija);
+                RezervacijaRepozitorij.DodajPodatkeURezervacijaGost();
+                RepozitorijSoba.PromijeniStatus(soba);
+
+                try
+                {
+                    HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoRezervaciji();
+                    SmtpClient posiljateljDetalji = new SmtpClient();
+                    //smisli kako prosljedit
+                    string primatelj = "zaposlenikhotela@gmail.com";
+                    string posiljatelj = "reservationsdreamteam@gmail.com";
+                    string posiljateljLozinka = "dreamteam1234";
+
+                    string naslov = "Nova rezervacija";
+                    string sadrzaj = "Imate novu rezervaciju!";
+                    string brojPorta = "587";
+                    string server = "smtp.gmail.com";
+                    posiljateljDetalji.Port = Convert.ToInt32(brojPorta.Trim());
+                    posiljateljDetalji.Host = server.Trim();
+                    posiljateljDetalji.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    posiljateljDetalji.UseDefaultCredentials = false;
+                    posiljateljDetalji.Credentials = new NetworkCredential(posiljatelj.Trim(), posiljateljLozinka.Trim());
+                    posiljateljDetalji.EnableSsl = true;
+
+                    MailMessage mailDetalji = new MailMessage();
+                    mailDetalji.From = new MailAddress(posiljatelj.Trim());
+                    mailDetalji.To.Add(primatelj.Trim());
+                    mailDetalji.Subject = naslov.Trim();
+                    mailDetalji.Body = sadrzaj.Trim();
+
+
+                    posiljateljDetalji.Send(mailDetalji);
+                    MessageBox.Show("Uspješno!");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                PopupNotifier popup = new PopupNotifier();
+                popup.ImageSize = new Size(100, 100);
+                popup.Image = Properties.Resources.recenzija;
+                popup.TitleText = "Rezervacija";
+                popup.ContentText = "Nova rezervacija!";
+                popup.Popup();
+                //gost dobiva poruku o uspješnoj rezervaciji
+                try
+                {
+                    SmtpClient posiljateljDetalji = new SmtpClient();
+
+
+                    string posiljatelj = "reservationsdreamteam@gmail.com";
+                    string posiljateljLozinka = "dreamteam1234";
+                    string naslov = "Uspješna rezervacija";
+                    string sadrzaj = "Čestitamo! Uspješno ste rezervirali sobu za željeni termin!";
+                    string brojPorta = "587";
+                    string server = "smtp.gmail.com";
+                    posiljateljDetalji.Port = Convert.ToInt32(brojPorta.Trim());
+                    posiljateljDetalji.Host = server.Trim();
+                    posiljateljDetalji.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    posiljateljDetalji.UseDefaultCredentials = false;
+                    posiljateljDetalji.Credentials = new NetworkCredential(posiljatelj.Trim(), posiljateljLozinka.Trim());
+                    posiljateljDetalji.EnableSsl = true;
+
+                    MailMessage mailDetalji = new MailMessage();
+                    mailDetalji.From = new MailAddress(posiljatelj.Trim());
+                    mailDetalji.To.Add(emailTextBox.Text.Trim());
+                    mailDetalji.Subject = naslov.Trim();
+                    mailDetalji.Body = sadrzaj.Trim();
+
+
+                    posiljateljDetalji.Send(mailDetalji);
+                    MessageBox.Show("Uspješno!");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                this.Hide();
+            }
+            else
+            {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriDodavanjeIzmjenuGosta(OIB_gosta, ime, prezime, IBAN, telefon, email, adresa, drzavljanstvo, covid_test, datum_rodjenja));
+                frmUpozorenje.ShowDialog();
+            }
 
         }
 

@@ -29,7 +29,9 @@ namespace Projekt_faza_1
 
         private void DohvatiZaposlenikeUDataGrid()
         {
+            dataGridViewZaposlenik.DataSource = null;
             dataGridViewZaposlenik.DataSource = ZaposlenikRepozitorij.DohvatiZaposlenikePoHotelu(ProsljeđeniHotel).ToList();
+            
             
         }
 
@@ -58,9 +60,8 @@ namespace Projekt_faza_1
         private void obrisiZaposlenikaButton_Click(object sender, EventArgs e)
         {
 
-            this.Hide();
 
-            if (dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa != null)
+            if (dataGridViewZaposlenik.SelectedRows.Count==1)
             {
                 ZaposlenikKlasa zaposlenikOdabrani = dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa;
                 ZaposlenikRepozitorij.ObrisiZaposlenika(zaposlenikOdabrani);

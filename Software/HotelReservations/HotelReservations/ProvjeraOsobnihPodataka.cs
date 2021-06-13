@@ -191,7 +191,7 @@ namespace Projekt_faza_1
         private void roundButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PregledSobaZaposlenik pregled = new PregledSobaZaposlenik();
+            PregledRezervacija pregled = new PregledRezervacija();
             pregled.ShowDialog();
         }
 

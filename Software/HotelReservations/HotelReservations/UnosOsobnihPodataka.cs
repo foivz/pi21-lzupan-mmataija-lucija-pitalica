@@ -188,7 +188,7 @@ namespace Projekt_faza_1
         private void roundButtonNatrag_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FrmGlavnaFormaAdmin glavna = new FrmGlavnaFormaAdmin();
+            FrmGlavnaFormaGost glavna = new FrmGlavnaFormaGost();
             glavna.ShowDialog();
         }
 

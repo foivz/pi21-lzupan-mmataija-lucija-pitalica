@@ -142,32 +142,31 @@ namespace Projekt_faza_1.Klase
             dr.Close();
             return hotelTrazeni;
         }
-        public static Klase.HotelKlasa DohvatiHotelPoZaposlenikovomImenu(string korisnicko_ime)
+        public static int ObrisiHotel(Klase.HotelKlasa hotel, int korisnik_id)
         {
-            Klase.HotelKlasa hotelTrazeni = new HotelKlasa();
-            string sqlUpit = $"SELECT Hotel.OIB_hotela, Hotel.IBAN, Hotel.naziv_hotela, Hotel.telefon, Hotel.adresa, Hotel.email, Hotel.kapacitet, Hotel.lozinka FROM Hotel, Zaposlenik WHERE Zaposlenik.korisnicko_ime = '{korisnicko_ime}' AND Zaposlenik.OIB_hotela = Hotel.OIB_hotela";
-            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
-            while (dr.Read())
+            string sqlUpit = "";
+            string sqlUpitDva = "";
+            bool postojiZapis = false;
+            List<Klase.HotelKlasa> hoteli = new List<Klase.HotelKlasa>();
+            hoteli = DohvatiHotele();
+            List<SobaKlasa> listaSoba = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
+            foreach (Klase.HotelKlasa item in hoteli)
             {
-                Klase.HotelKlasa hotel = DohvatiHotel(dr);
-                hotelTrazeni = hotel;
+                if (item.OIB_Hotela == hotel.OIB_Hotela)
+                {
+                    postojiZapis = true;
+                }
             }
-            dr.Close();
-            return hotelTrazeni;
-        }
-        public static Klase.HotelKlasa DohvatiHotelPoZaposlenikovomImenu(string lozinka, string korisnicko_ime)
-        {
-            Klase.HotelKlasa hotelTrazeni = new HotelKlasa();
-            string sqlUpit = $"SELECT Hotel.OIB_hotela, Hotel.IBAN, Hotel.naziv_hotela, Hotel.telefon, Hotel.adresa, Hotel.email, Hotel.kapacitet, Hotel.korisnik_id, Hotel.lozinka FROM Hotel, Zaposlenik WHERE Zaposlenik.korisnicko_ime = '{korisnicko_ime}' AND Zaposlenik.lozinka= '{lozinka}' AND Zaposlenik.OIB_hotela = Hotel.OIB_hotela";
-            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
-            while (dr.Read())
+            if (postojiZapis == true)
             {
-                Klase.HotelKlasa hotel = DohvatiHotel(dr);
-                hotelTrazeni = hotel;
-            }
-            dr.Close();
-            return hotelTrazeni;
-        }
+                sqlUpit = $"DELETE FROM Hotel WHERE OIB_hotela = {hotel.OIB_Hotela} ";
+                foreach (var item in listaSoba)
+                {
+                    sqlUpitDva = $"DELETE FROM Soba WHERE OIB_hotela = {item.OIB_hotela} ";
+                }
 
+            }
+            return DB.Instance.IzvrsiUpite(sqlUpit, sqlUpitDva);
+        }
     }
 }

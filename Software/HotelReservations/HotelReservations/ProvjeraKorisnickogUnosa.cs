@@ -531,7 +531,7 @@ namespace Projekt_faza_1
             {
                 foreach (RezervacijaKlasa rezervacija in listaRezervacija)
                 {
-                    if (soba.Broj_sobe == brojSobe.ToString() && soba.ID_soba == rezervacija.Id_soba)
+                    if (soba.Broj_sobe == brojSobe.ToString() && soba.ID_soba == rezervacija.Id_soba && rezervacija.Check_in != null)
                     {
                         postojiGost = true;
                     }

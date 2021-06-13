@@ -376,7 +376,21 @@ namespace Projekt_faza_1
             return povratnaPoruka;
         }
 
+        public static string ProvjeriDodavanjeIzmjenuGosta(string OIB_gosta, string ime, string prezime, string IBAN, string telefon, string email, string adresa, string drzavljanstvo, string covid_test, string datum_rodjenja)
+        {
 
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriOIB(OIB_gosta);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIme(ime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriPrezime(prezime);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriIBAN(IBAN);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriTelefon(telefon);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriAdresu(adresa);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriDrzavljanstvo(drzavljanstvo);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriCovidTest(covid_test);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriDatumRodjenja(datum_rodjenja);
+            return povratnaPoruka;
+        }
 
 
 

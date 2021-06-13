@@ -226,6 +226,19 @@ namespace Projekt_faza_1.Klase
 
             return listaHotelaSlobodnih;
         }
-
+        public static Klase.HotelKlasa DohvatiHotelPoRezervaciji()
+        {
+            RezervacijaKlasa rezervacija = RezervacijaRepozitorij.DohvatiZadnjuRezervaciju();
+            Klase.HotelKlasa hotelTrazeni = new HotelKlasa();
+            string sqlUpit = $"SELECT Hotel.OIB_hotela, Hotel.IBAN, Hotel.naziv_hotela, Hotel.telefon, Hotel.adresa, Hotel.email, Hotel.kapacitet,  Hotel.lozinka FROM Hotel, Rezervacija, Soba WHERE Hotel.OIB_hotela = Soba.OIB_hotela AND Soba.id_soba = '{rezervacija.Id_soba}' ";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                Klase.HotelKlasa hotel = DohvatiHotel(dr);
+                hotelTrazeni = hotel;
+            }
+            dr.Close();
+            return hotelTrazeni;
+        }
     }
 }

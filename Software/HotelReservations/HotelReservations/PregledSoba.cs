@@ -79,8 +79,16 @@ namespace Projekt_faza_1
 
         private void buttonRezerviraj_Click(object sender, EventArgs e)
         {
-           
-          
+            if (dataGridViewSoba.SelectedRows.Count == 1)
+            {
+                this.Hide();
+                SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+                DateTime datumDolaska = datumDolaskadateTimePicker.Value;
+                DateTime datumOdlaska = datumOdlaskadateTimePicker.Value;
+                RezervirajSobu rezervirajSobuForma = new RezervirajSobu(soba, datumDolaska, datumOdlaska);
+                rezervirajSobuForma.ShowDialog();
+            }
+
         }
 
         private void buttonFiltriraj_Click(object sender, EventArgs e)

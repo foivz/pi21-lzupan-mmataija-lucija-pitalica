@@ -376,6 +376,7 @@ namespace Projekt_faza_1
             return povratnaPoruka;
         }
 
+
         public static string ProvjeriDodavanjeIzmjenuGosta(string OIB_gosta, string ime, string prezime, string IBAN, string telefon, string email, string adresa, string drzavljanstvo, string covid_test, string datum_rodjenja)
         {
 
@@ -391,6 +392,53 @@ namespace Projekt_faza_1
             povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriDatumRodjenja(datum_rodjenja);
             return povratnaPoruka;
         }
+
+        public static string ProvjeriPrijavuKvara(string OIBgosta, string brojSobe, string opis, HotelKlasa hotel)
+        {
+
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriOIB(OIBgosta.ToString());
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriBrojSobe(brojSobe.ToString());
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriSadrzaj(opis);
+            if (povratnaPoruka == "")
+            {
+
+                if (BazaProvjeriPrijavuKvara(int.Parse(OIBgosta), int.Parse(brojSobe), hotel) == false)
+                {
+                    povratnaPoruka += "Niste boravili u sobi za koju želite prijaviti kvar!\n";
+                }
+            }
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriPrijavuKvara(int OIB_gosta, int brojSobe, HotelKlasa hotel)
+        {
+            bool postojiGost = false;
+            List<GostKlasa> lista = new List<GostKlasa>();
+            string sqlUpit = $"SELECT * FROM Gost";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                GostKlasa gost = GostRepozitorij.DohvatiGosta(dr);
+                lista.Add(gost);
+            }
+            dr.Close();
+
+            List<SobaKlasa> listaSoba = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
+            List<RezervacijaKlasa> listaRezervacija = RezervacijaRepozitorij.DohvatiRezervacijeGostaPoOIB(OIB_gosta.ToString());
+            foreach (SobaKlasa soba in listaSoba)
+            {
+                foreach (RezervacijaKlasa rezervacija in listaRezervacija)
+                {
+                    if (soba.Broj_sobe == brojSobe.ToString() && soba.ID_soba == rezervacija.Id_soba && rezervacija.Check_out == "" && rezervacija.Check_in != null)
+                    {
+                        postojiGost = true;
+                    }
+                }
+            }
+            return postojiGost;
+
+        }
+
 
 
 

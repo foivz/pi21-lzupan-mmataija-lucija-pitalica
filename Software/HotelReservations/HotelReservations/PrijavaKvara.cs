@@ -33,8 +33,30 @@ namespace Projekt_faza_1
 
         private void btnPosalji_Click(object sender, EventArgs e)
         {
-           
-        }
+            string opis = opisTextBox.Text;
+            HotelKlasa hotel = comboBoxHotel.SelectedItem as HotelKlasa;
+            string OIB_hotela = hotel.OIB_Hotela;
+
+            if (ProvjeraKorisnickogUnosa.ProvjeriPrijavuKvara(textBoxOIB.Text, textBoxBrojSobe.Text, opis, hotel) == "")
+            {
+                int OIBgosta = int.Parse(textBoxOIB.Text);
+                int brojSobe = int.Parse(textBoxBrojSobe.Text);
+                PrijavaKvaraKlasa prijavaKvara = new PrijavaKvaraKlasa();
+                prijavaKvara.OIB_gosta = OIBgosta;
+                prijavaKvara.Broj_sobe = brojSobe;
+                prijavaKvara.Datum_prijave_kvara = DateTime.Now;
+                prijavaKvara.Opis = opis;
+                prijavaKvara.OIB_hotela = OIB_hotela;
+
+
+                Klase.RepozitorijPrijavaKvara.DodajPrijavuKvara(prijavaKvara);
+            }
+            else {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriPrijavuKvara(textBoxOIB.Text, textBoxBrojSobe.Text, opis, hotel));
+                frmUpozorenje.ShowDialog();
+            }
+
+            }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)
         {

@@ -47,7 +47,9 @@ namespace Projekt_faza_1
 
         private void buttonPregledKvarova_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            PrijavaKvara prijavaKvara = new PrijavaKvara();
+            prijavaKvara.ShowDialog();
         }
 
         private void FrmGlavnaFormaGost_Load(object sender, EventArgs e)

@@ -440,7 +440,47 @@ namespace Projekt_faza_1
         }
 
 
+        public static string ProvjeriKapcitet(int rezervacija_id, int id_soba)
+        {
+            string povratnaPoruka = "";
+            if (povratnaPoruka == "")
+            {
+                if (BazaProvjeriKapcitet(rezervacija_id, id_soba) == true)
+                {
+                    povratnaPoruka += "Ne možete unijeti više gostiju u tu sobu, kapacitet premašen!\n";
+                }
+            }
 
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriKapcitet(int rezevacija_id, int id_soba)
+        {
+            bool premaseno = false;
+            List<RezervacijaGost> lista = RepozitorijRezervacijaGost.DohvatiRezervacijeGostiju();
+            List<SobaKlasa> sobe = RepozitorijSoba.DohvatiSobe();
+            int br = 0;
+            foreach (var item in lista)
+            {
+                if (item.Rezervacija_ID == rezevacija_id)
+                {
+                    br = br + 1;
+                }
+            }
+            int kapacitet = 0;
+            foreach (var item in sobe)
+            {
+                if (item.ID_soba == id_soba)
+                {
+                    kapacitet = item.Kapacitet;
+                }
+            }
 
+            if (br == kapacitet)
+            {
+                premaseno = true;
+            }
+            return premaseno;
+
+        }
     }
 }

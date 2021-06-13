@@ -57,7 +57,18 @@ namespace Projekt_faza_1
 
         private void obrisiZaposlenikaButton_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream:Software/Projekt_faza_1/PregledZaposlenika.cs
             this.Hide();
+=======
+            if (dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa != null)
+            {
+                ZaposlenikKlasa zaposlenikOdabrani = dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa;
+                ZaposlenikRepozitorij.ObrisiZaposlenika(zaposlenikOdabrani);
+
+                ZaposlenRepozitorij.IzbrisiZaposlen(zaposlenikOdabrani.ID_zaposlenik);
+                DohvatiZaposlenikeUDataGrid();
+            }
+>>>>>>> Stashed changes:Software/HotelReservations/HotelReservations/PregledZaposlenika.cs
         }
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)

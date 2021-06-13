@@ -96,7 +96,6 @@ namespace Projekt_faza_1
             lblLozinka.BackColor = System.Drawing.Color.Transparent;
             lbIIBAN.BackColor = System.Drawing.Color.Transparent;
             lblTipZaposlenika.BackColor = System.Drawing.Color.Transparent;
-            labelSlika.BackColor = System.Drawing.Color.Transparent;
             labelKorisnickiRacun.BackColor = System.Drawing.Color.Transparent;
             pictureBox2.BackColor= System.Drawing.Color.Transparent;
         }

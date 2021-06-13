@@ -19,8 +19,10 @@ namespace Projekt_faza_1
 
         private void buttonDodajHotel_Click(object sender, EventArgs e)
         {
-         
-            
+            this.Hide();
+            DodajHotel dodajHotelForma = new DodajHotel();
+            dodajHotelForma.ShowDialog();
+
         }
 
         private void buttonDodajSobu_Click(object sender, EventArgs e)

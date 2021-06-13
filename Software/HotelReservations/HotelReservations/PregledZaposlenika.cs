@@ -54,7 +54,12 @@ namespace Projekt_faza_1
 
         private void azurirajPodatkeButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (dataGridViewZaposlenik.SelectedRows.Count == 1)
+            {
+                this.Hide();
+                IzmjenaPodatakaZaposlenikaAdmin formaIzmjena = new IzmjenaPodatakaZaposlenikaAdmin(dataGridViewZaposlenik.CurrentRow.DataBoundItem as ZaposlenikKlasa);
+                formaIzmjena.ShowDialog();
+            }
         }
 
         private void obrisiZaposlenikaButton_Click(object sender, EventArgs e)

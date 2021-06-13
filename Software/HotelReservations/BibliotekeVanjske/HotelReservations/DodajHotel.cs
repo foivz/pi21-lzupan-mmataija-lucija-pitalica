@@ -38,13 +38,44 @@ namespace Projekt_faza_1
 
         private void dodajHotelButton_Click(object sender, EventArgs e)
         {
-            
+            TextBox textbox = new TextBox();
+
+            List<TextBox> lista = new List<TextBox>();
+            lista.Add(oibtextBox);
+            lista.Add(ibantextBox);
+            lista.Add(nazivtextBox);
+            lista.Add(telefonTextBox);
+            lista.Add(adresaTextBox);
+            lista.Add(emailTextBox);
+            lista.Add(kapacitetTextBox);
+            if (ProvjeraKorisnickogUnosa.ProvjeriDodavanjeIzmjenuHotela(lista) == "")
+            {
+                HotelKlasa hotel = new HotelKlasa();
+                hotel.OIB_Hotela = oibtextBox.Text;
+                hotel.IBAN = ibantextBox.Text;
+                hotel.Naziv_hotel = nazivtextBox.Text;
+                hotel.Telefon = telefonTextBox.Text;
+                hotel.Adresa = adresaTextBox.Text;
+                hotel.Email = emailTextBox.Text;
+                hotel.Kapacitet = int.Parse(kapacitetTextBox.Text);
+                HotelRepozitorij.DodajHotel(hotel);
+                this.Hide();
+                PregledHotela pregled = new PregledHotela();
+                pregled.ShowDialog();
+            }
+            else
+            {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriDodavanjeIzmjenuHotela(lista));
+                frmUpozorenje.ShowDialog();
+            }
 
         }
 
         private void roundButton_Click(object sender, EventArgs e)
         {
-         
+            this.Hide();
+            FrmGlavnaFormaAdmin glavna = new FrmGlavnaFormaAdmin();
+            glavna.ShowDialog();
         }
     }
 }

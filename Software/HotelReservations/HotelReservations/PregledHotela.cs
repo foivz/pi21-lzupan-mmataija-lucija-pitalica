@@ -46,8 +46,8 @@ namespace Projekt_faza_1
         {
             this.Hide();
             HotelKlasa hotel = dataGridViewHoteli.CurrentRow.DataBoundItem as HotelKlasa;
-            //PregledSobaAdmin pregledaj = new PregledSobaAdmin(hotel);
-            //pregledaj.ShowDialog();
+            PregledSobaAdmin pregledaj = new PregledSobaAdmin(hotel);
+            pregledaj.ShowDialog();
 
         }
 

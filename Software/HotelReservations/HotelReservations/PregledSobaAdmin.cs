@@ -13,6 +13,7 @@ namespace Projekt_faza_1
 {
     public partial class PregledSobaAdmin : Form
     {
+
         public Klase.HotelKlasa HotelProslijedeni { get; set; }
         public PregledSobaAdmin(Klase.HotelKlasa hotel)
         {

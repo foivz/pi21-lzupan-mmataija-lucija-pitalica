@@ -198,6 +198,34 @@ namespace Projekt_faza_1.Klase
             dr.Close();
             return hotelTrazeni;
         }
+        public static List<Klase.HotelKlasa> DohvatiHotelePoGostu(List<SobaKlasa> sobe)
+        {
+
+            List<Klase.HotelKlasa> listaHotela = HotelRepozitorij.DohvatiHotele();
+            List<Klase.HotelKlasa> listaHotelaSlobodnih = new List<HotelKlasa>();
+
+            foreach (var soba in sobe)
+            {
+                foreach (var hotel in listaHotela)
+                {
+                    if (soba.OIB_hotela == hotel.OIB_Hotela)
+                    {
+                        if (listaHotelaSlobodnih.Count == 0)
+                        {
+                            listaHotelaSlobodnih.Add(hotel);
+
+                        }
+                        else if (listaHotelaSlobodnih.Contains(hotel) == false)
+                        {
+                            listaHotelaSlobodnih.Add(hotel);
+                        }
+                    }
+                }
+            }
+
+
+            return listaHotelaSlobodnih;
+        }
 
     }
 }

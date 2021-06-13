@@ -34,7 +34,9 @@ namespace Projekt_faza_1
 
         private void buttonNapraviRezervaciju_Click(object sender, EventArgs e)
         {
-          
+            this.Hide();
+            RezervirajSobuKaoGost rezerviraj = new RezervirajSobuKaoGost();
+            rezerviraj.ShowDialog();
 
         }
 

@@ -13,19 +13,24 @@ namespace Projekt_faza_1
    
     public partial class RezervirajSobuKaoGost : Form
     {
-      
+        public Klase.HotelKlasa ProsljeđeniHotel { get; set; }
+
+        public RezervirajSobuKaoGost(Klase.HotelKlasa hotel)
+        {
+            InitializeComponent();
+            ProsljeđeniHotel = hotel;
+        }
 
         public RezervirajSobuKaoGost()
         {
             InitializeComponent();
-  
+
         }
-
-
         private void buttonPrikaziHotele_Click(object sender, EventArgs e)
         {
             this.Hide();
-          
+            PregledHotelaGost formaPregledHotela = new PregledHotelaGost(datumDolaskadateTimePicker.Value, datumOdlaskadateTimePicker.Value);
+            formaPregledHotela.ShowDialog();
         }
 
         private void rezervirajSobuButton_Click(object sender, EventArgs e)

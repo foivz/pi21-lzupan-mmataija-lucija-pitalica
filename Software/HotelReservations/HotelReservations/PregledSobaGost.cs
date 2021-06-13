@@ -13,10 +13,15 @@ namespace Projekt_faza_1
 {
     public partial class PregledSobaGost : Form
     {
-       
-        public PregledSobaGost()
+        public Klase.HotelKlasa ProsljedeniHotel { get; set; }
+        public DateTime DatumDolaska { get; set; }
+        public DateTime DatumOdlaska { get; set; }
+        public PregledSobaGost(Klase.HotelKlasa hotel, DateTime datumDolaska, DateTime datumOdlaska)
         {
             InitializeComponent();
+            ProsljedeniHotel = hotel;
+            DatumDolaska = datumDolaska;
+            DatumOdlaska = datumOdlaska;
         }
        
         private void PregledSobaGost_Load(object sender, EventArgs e)
@@ -28,12 +33,23 @@ namespace Projekt_faza_1
 
         private void buttonFiltriraj_Click(object sender, EventArgs e)
         {
-        
+            if (!string.IsNullOrEmpty(textBoxKapacitet.Text))
+            {
+                buttonRezerviraj.Enabled = true;
+                string uvjet = "Kapacitet";
+                dataGridViewSoba.DataSource = null;
+                dataGridViewSoba.DataSource = RepozitorijSoba.DohvatiSlobodneSobePoDatumu(DatumDolaska, DatumOdlaska, uvjet, textBoxKapacitet.Text, ProsljedeniHotel);
+            }
         }
 
         private void buttonRezerviraj_Click(object sender, EventArgs e)
         {
+            SobaKlasa sobaIzabrana = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+            this.Hide();
+            RezervirajSobu pregled = new RezervirajSobu(sobaIzabrana, DatumDolaska, DatumOdlaska);
+            pregled.ShowDialog();
         }
+    }
 
         private void buttonUpit_Click(object sender, EventArgs e)
         {

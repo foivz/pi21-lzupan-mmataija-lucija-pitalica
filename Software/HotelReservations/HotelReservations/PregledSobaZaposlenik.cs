@@ -25,7 +25,6 @@ namespace Projekt_faza_1
 
             dataGridViewSoba.DataSource = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
             popisSobaLabel.BackColor = System.Drawing.Color.Transparent;
-            labelKapacitet.BackColor = System.Drawing.Color.Transparent;
             labelNazivHotela.BackColor = System.Drawing.Color.Transparent;
             comboBoxHotel.Text = hotel.Naziv_hotel;
             comboBoxHotel.Enabled = false;

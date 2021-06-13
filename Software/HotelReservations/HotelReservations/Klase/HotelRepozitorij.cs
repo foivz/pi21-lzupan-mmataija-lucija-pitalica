@@ -142,6 +142,31 @@ namespace Projekt_faza_1.Klase
             dr.Close();
             return hotelTrazeni;
         }
+        public static int ObrisiHotel(Klase.HotelKlasa hotel, int korisnik_id)
+        {
+            string sqlUpit = "";
+            string sqlUpitDva = "";
+            bool postojiZapis = false;
+            List<Klase.HotelKlasa> hoteli = new List<Klase.HotelKlasa>();
+            hoteli = DohvatiHotele();
+            List<SobaKlasa> listaSoba = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
+            foreach (Klase.HotelKlasa item in hoteli)
+            {
+                if (item.OIB_Hotela == hotel.OIB_Hotela)
+                {
+                    postojiZapis = true;
+                }
+            }
+            if (postojiZapis == true)
+            {
+                sqlUpit = $"DELETE FROM Hotel WHERE OIB_hotela = {hotel.OIB_Hotela} ";
+                foreach (var item in listaSoba)
+                {
+                    sqlUpitDva = $"DELETE FROM Soba WHERE OIB_hotela = {item.OIB_hotela} ";
+                }
 
+            }
+            return DB.Instance.IzvrsiUpite(sqlUpit, sqlUpitDva);
+        }
     }
 }

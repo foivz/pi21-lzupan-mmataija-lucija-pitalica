@@ -28,10 +28,35 @@ namespace Projekt_faza_1
 
         private void btnPosalji_Click(object sender, EventArgs e)
         {
+
             string opis = opisTextBox.Text;
             int ocjena = (int)numericUpDownOcjena.Value;
             string datum = DateTime.Now.ToString();
-           
+            HotelKlasa hotel = comboBoxAdresaiNaziv.SelectedItem as HotelKlasa;
+
+
+
+            if (ProvjeraKorisnickogUnosa.ProvjeriRecenziju(textBoxOIB.Text, textBoxBrojSobe.Text, opis, ocjena, hotel) == "")
+            {
+                int OIBgosta = int.Parse(textBoxOIB.Text);
+                int brojSobe = int.Parse(textBoxBrojSobe.Text);
+                RecenzijaKlasa recenzija = new RecenzijaKlasa();
+                recenzija.OIB_gosta = OIBgosta;
+                recenzija.Broj_sobe = brojSobe;
+                recenzija.Datum_recenzije = DateTime.Now;
+                recenzija.Opis = opis;
+                recenzija.Ocjena = ocjena;
+                recenzija.OIB_hotela = hotel.OIB_Hotela;
+
+
+
+                Klase.RepozitorjRecenzija.DodajRecenziju(recenzija);
+            }
+            else
+            {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriRecenziju(textBoxOIB.Text, textBoxBrojSobe.Text, opis, ocjena, hotel));
+                frmUpozorenje.ShowDialog();
+            }
 
         }
 

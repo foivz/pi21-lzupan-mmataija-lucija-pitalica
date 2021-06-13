@@ -42,7 +42,9 @@ namespace Projekt_faza_1
 
         private void buttonPrikazRecenzija_Click(object sender, EventArgs e)
         {
-         
+            this.Hide();
+            RecenzijaForma recenzija = new RecenzijaForma();
+            recenzija.ShowDialog();
         }
 
         private void buttonPregledKvarova_Click(object sender, EventArgs e)

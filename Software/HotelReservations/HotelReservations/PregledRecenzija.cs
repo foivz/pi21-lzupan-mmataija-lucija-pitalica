@@ -20,8 +20,11 @@ namespace Projekt_faza_1
 
         private void PregledRecenzija_Load(object sender, EventArgs e)
         {
-          
+
+            ZaposlenikKlasa zaposlenik = ZaposlenikRepozitorij.DohvatiZaposlenikaPoImenu(UlogiraniKorisnik.Korisnicko_ime, UlogiraniKorisnik.Lozinka);
+            HotelKlasa hotel = HotelRepozitorij.DohvatiHotelPoZaposlenikovomImenu(UlogiraniKorisnik.Lozinka, UlogiraniKorisnik.Korisnicko_ime);
             dataGridViewRecenzije.DataSource = null;
+            dataGridViewRecenzije.DataSource = RepozitorjRecenzija.DohvatiRecenzijePoHotelu(hotel);
             labelRecenzije.BackColor = System.Drawing.Color.Transparent;
         }
 

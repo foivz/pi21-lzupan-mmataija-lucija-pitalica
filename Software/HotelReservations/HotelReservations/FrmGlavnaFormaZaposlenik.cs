@@ -20,7 +20,8 @@ namespace Projekt_faza_1
 
         private void buttonPrikazRecenzija_Click(object sender, EventArgs e)
         {
-         
+            PregledRecenzija pregledRecenzija = new PregledRecenzija();
+            pregledRecenzija.ShowDialog();
         }
 
         private void buttonPregledRezervacija_Click(object sender, EventArgs e)

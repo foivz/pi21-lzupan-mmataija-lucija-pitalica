@@ -491,5 +491,77 @@ namespace Projekt_faza_1
             povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriEmail(kontakt);
             return povratnaPoruka;
         }
+        public static string ProvjeriRecenziju(string OIBgosta, string brojSobe, string opis, int ocjena, HotelKlasa hotel)
+        {
+
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriOIB(OIBgosta.ToString());
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriBrojSobe(brojSobe.ToString());
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriSadrzaj(opis);
+            if (povratnaPoruka == "")
+            {
+
+                if (BazaProvjeriDodavanjeRecenzije(int.Parse(OIBgosta), int.Parse(brojSobe), hotel) == false)
+                {
+                    povratnaPoruka += "Niste boravili u ovoj sobi!\n";
+                }
+                else if (BazaProvjeriDodavaanjeRecenzijeVisePuta(int.Parse(OIBgosta), hotel))
+                {
+                    povratnaPoruka += "Već ste ostavili recenziju!\n";
+                }
+            }
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriDodavanjeRecenzije(int OIB_gosta, int brojSobe, HotelKlasa hotel)
+        {
+            bool postojiGost = false;
+            List<GostKlasa> lista = new List<GostKlasa>();
+            string sqlUpit = $"SELECT * FROM Gost";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                GostKlasa gost = GostRepozitorij.DohvatiGosta(dr);
+                lista.Add(gost);
+            }
+            dr.Close();
+
+            List<SobaKlasa> listaSoba = RepozitorijSoba.DohvatiSobePoHotelu(hotel);
+            List<RezervacijaKlasa> listaRezervacija = RezervacijaRepozitorij.DohvatiRezervacijeGostaPoOIB(OIB_gosta.ToString());
+            foreach (SobaKlasa soba in listaSoba)
+            {
+                foreach (RezervacijaKlasa rezervacija in listaRezervacija)
+                {
+                    if (soba.Broj_sobe == brojSobe.ToString() && soba.ID_soba == rezervacija.Id_soba)
+                    {
+                        postojiGost = true;
+                    }
+                }
+            }
+            return postojiGost;
+
+        }
+        public static bool BazaProvjeriDodavaanjeRecenzijeVisePuta(int OIB_gost, HotelKlasa hotel)
+        {
+            bool vecIspunjeno = false;
+            List<RecenzijaKlasa> lista = new List<RecenzijaKlasa>();
+            string sqlUpit = $"SELECT * FROM Recenzija";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                RecenzijaKlasa recenzija = RepozitorjRecenzija.DohvatiRecenziju(dr);
+                lista.Add(recenzija);
+            }
+            dr.Close();
+            foreach (RecenzijaKlasa recenzijaItem in lista)
+            {
+
+                if (recenzijaItem.OIB_hotela == hotel.OIB_Hotela && recenzijaItem.OIB_gosta == OIB_gost)
+                {
+                    vecIspunjeno = true;
+                }
+
+            }
+            return vecIspunjeno;
+        }
     }
 }

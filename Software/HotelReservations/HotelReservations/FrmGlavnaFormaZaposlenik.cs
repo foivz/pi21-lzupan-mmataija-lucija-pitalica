@@ -68,7 +68,9 @@ namespace Projekt_faza_1
 
         private void buttonMojProfil_Click(object sender, EventArgs e)
         {
-       
+            this.Close();
+            IzmjenaPodatakaZaposlenika formaIzmjena = new IzmjenaPodatakaZaposlenika();
+            formaIzmjena.ShowDialog();
 
         }
     }

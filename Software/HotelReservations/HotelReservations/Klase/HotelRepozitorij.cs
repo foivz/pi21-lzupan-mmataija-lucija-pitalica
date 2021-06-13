@@ -155,6 +155,19 @@ namespace Projekt_faza_1.Klase
             dr.Close();
             return hotelTrazeni;
         }
+        public static Klase.HotelKlasa DohvatiHotelPoZaposlenikovomImenu(string lozinka, string korisnicko_ime)
+        {
+            Klase.HotelKlasa hotelTrazeni = new HotelKlasa();
+            string sqlUpit = $"SELECT Hotel.OIB_hotela, Hotel.IBAN, Hotel.naziv_hotela, Hotel.telefon, Hotel.adresa, Hotel.email, Hotel.kapacitet, Hotel.korisnik_id, Hotel.lozinka FROM Hotel, Zaposlenik WHERE Zaposlenik.korisnicko_ime = '{korisnicko_ime}' AND Zaposlenik.lozinka= '{lozinka}' AND Zaposlenik.OIB_hotela = Hotel.OIB_hotela";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                Klase.HotelKlasa hotel = DohvatiHotel(dr);
+                hotelTrazeni = hotel;
+            }
+            dr.Close();
+            return hotelTrazeni;
+        }
 
     }
 }

@@ -13,11 +13,11 @@ namespace Projekt_faza_1
 {
     public partial class PregledSobaAdmin : Form
     {
-      
-        public PregledSobaAdmin()
+        public Klase.HotelKlasa HotelProslijedeni { get; set; }
+        public PregledSobaAdmin(Klase.HotelKlasa hotel)
         {
             InitializeComponent();
-          
+            HotelProslijedeni = hotel;
         }
 
         private void PregledSobaAdmin_Load(object sender, EventArgs e)
@@ -29,20 +29,24 @@ namespace Projekt_faza_1
         private void OsvjeziSobe()
         {
             dataGridViewSoba.DataSource = null;
-           
+            dataGridViewSoba.DataSource = RepozitorijSoba.DohvatiSobePoHotelu(HotelProslijedeni);
         }
 
         private void azurirajSobuButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-          
+            SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+            AzurirajSobu azuriraj = new AzurirajSobu(soba, HotelProslijedeni);
+            azuriraj.ShowDialog();
 
         }
 
         private void obrisiSobuButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-           
+            SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+            ObrisiSobu obrisi = new ObrisiSobu(soba);
+            obrisi.ShowDialog();
         }
 
         private void dodajSobuButton_Click(object sender, EventArgs e)

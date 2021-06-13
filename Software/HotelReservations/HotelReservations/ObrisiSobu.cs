@@ -13,16 +13,30 @@ namespace Projekt_faza_1
 {
     public partial class ObrisiSobu : Form
     {
-       
-        public ObrisiSobu()
+        public Klase.SobaKlasa SobaProsljeđena { get; set; }
+        public ObrisiSobu(Klase.SobaKlasa soba)
         {
             InitializeComponent();
-          
+            SobaProsljeđena = soba;
+
         }
 
         private void ObrisiSobu_Load(object sender, EventArgs e)
         {
-        
+            brojSobetextBox.Text = SobaProsljeđena.ID_soba.ToString();
+            brojSobetextBox.Enabled = false;
+            textBoxHotel.Text = SobaProsljeđena.OIB_hotela.ToString();
+            textBoxHotel.Enabled = false;
+            velicinaSobeTextBox.Text = SobaProsljeđena.VelicinaSobe.ToString();
+            velicinaSobeTextBox.Enabled = false;
+            kapacitetTextBox.Text = SobaProsljeđena.Kapacitet.ToString();
+            kapacitetTextBox.Enabled = false;
+            sadrzajSobeTextBox.Text = SobaProsljeđena.Sadrzaj_sobe;
+            sadrzajSobeTextBox.Enabled = false;
+            sadrzajKupaoniceTextBox.Text = SobaProsljeđena.Sadrzaj_kupaonice;
+            sadrzajKupaoniceTextBox.Enabled = false;
+            textBoxNapomene.Text = SobaProsljeđena.Napomene;
+            textBoxNapomene.Enabled = false;
             dodajSobuLabel.BackColor = System.Drawing.Color.Transparent;
             brojSobeLabel.BackColor = System.Drawing.Color.Transparent;
             oibHotelLabel.BackColor = System.Drawing.Color.Transparent;
@@ -52,7 +66,16 @@ namespace Projekt_faza_1
             string sadrzajKupaonice = sadrzajKupaoniceTextBox.Text;
             string napomena = textBoxNapomene.Text;
 
-           
+            SobaKlasa soba = new SobaKlasa();
+            soba.ID_soba = int.Parse(brojSobe);
+            soba.VelicinaSobe = int.Parse(velicina);
+            soba.Kapacitet = int.Parse(kapacitet);
+            soba.Sadrzaj_sobe = sadrzaj;
+            soba.Sadrzaj_kupaonice = sadrzajKupaonice;
+            soba.Napomene = napomena;
+            soba.OIB_hotela = nazivHotela;
+            RepozitorijSoba.ObrisiSobu(soba); 
+
             if (UlogiraniKorisnik.Uloga_id == 2)
             {
                 this.Hide();

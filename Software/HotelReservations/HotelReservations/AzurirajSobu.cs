@@ -13,11 +13,13 @@ namespace Projekt_faza_1
 {
     public partial class AzurirajSobu : Form
     {
-    
-        public AzurirajSobu()
+        public Klase.SobaKlasa SobaProsljedjena { get; set; }
+        public Klase.HotelKlasa HotelProslijedeni { get; set; }
+        public AzurirajSobu(Klase.SobaKlasa soba, HotelKlasa hotelKlasa)
         {
             InitializeComponent();
-    
+            SobaProsljedjena = soba;
+            HotelProslijedeni = hotelKlasa;
         }
 
         private void dodajSobubutton_Click(object sender, EventArgs e)
@@ -30,16 +32,63 @@ namespace Projekt_faza_1
             string sadrzaj = sadrzajSobeTextBox.Text;
             string sadrzajKupaonice = sadrzajKupaoniceTextBox.Text;
             string napomena = textBoxNapomene.Text;
-            
+            if (ProvjeraKorisnickogUnosa.ProvjeriIzmjenuSobe(SobaProsljedjena.ID_soba, SobaProsljedjena.Broj_sobe, HotelProslijedeni, broj, velicina, kapacitet, sadrzaj, napomena, nazivHotela, sadrzajKupaonice) == "")
+            {
 
-         
+                SobaKlasa soba = new SobaKlasa();
+                soba.ID_soba = SobaProsljedjena.ID_soba;
+                soba.Broj_sobe = broj;
+                soba.VelicinaSobe = int.Parse(velicina);
+                soba.Kapacitet = int.Parse(kapacitet);
+                soba.Sadrzaj_sobe = sadrzaj;
+                soba.Sadrzaj_kupaonice = sadrzajKupaonice;
+                soba.Napomene = napomena;
+                soba.OIB_hotela = nazivHotela;
+                RepozitorijSoba.IzmijeniSobu(soba);
+                if (UlogiraniKorisnik.Uloga_id == 1)
+                {
+                    this.Hide();
+                    PregledSobaAdmin pregled = new PregledSobaAdmin(HotelProslijedeni);
+                    pregled.ShowDialog();
+                }
 
-            
+                if (UlogiraniKorisnik.Uloga_id == 2)
+                {
+                    this.Hide();
+                    PregledSoba pregled = new PregledSoba(HotelProslijedeni);
+                    pregled.ShowDialog();
+                }
+            }
+            else
+            {
+                FrmUpozorenje frmUpozorenje = new FrmUpozorenje(ProvjeraKorisnickogUnosa.ProvjeriIzmjenuSobe(SobaProsljedjena.ID_soba, SobaProsljedjena.Broj_sobe, HotelProslijedeni, broj, velicina, kapacitet, sadrzaj, napomena, nazivHotela, sadrzajKupaonice));
+                frmUpozorenje.ShowDialog();
+            }
+
+
+
+
         }
 
         private void AzurirajSobu_Load(object sender, EventArgs e)
         {
-      
+            brojSobetextBox.Text = SobaProsljedjena.ID_soba.ToString();
+            brojSobetextBox.Enabled = false;
+            textBoxHotel.Text = SobaProsljedjena.OIB_hotela.ToString();
+            textBoxHotel.Enabled = false;
+            velicinaSobeTextBox.Text = SobaProsljedjena.VelicinaSobe.ToString();
+            kapacitetTextBox.Text = SobaProsljedjena.Kapacitet.ToString();
+            sadrzajSobeTextBox.Text = SobaProsljedjena.Sadrzaj_sobe;
+            sadrzajKupaoniceTextBox.Text = SobaProsljedjena.Sadrzaj_kupaonice;
+            textBoxNapomene.Text = SobaProsljedjena.Napomene;
+            dodajSobuLabel.BackColor = System.Drawing.Color.Transparent;
+            brojSobeLabel.BackColor = System.Drawing.Color.Transparent;
+            oibHotelLabel.BackColor = System.Drawing.Color.Transparent;
+            velicinaSobeLabel.BackColor = System.Drawing.Color.Transparent;
+            kapacitetLabel.BackColor = System.Drawing.Color.Transparent;
+            sadrzajSobeLabel.BackColor = System.Drawing.Color.Transparent;
+            sadrzajKupaoniceLabel.BackColor = System.Drawing.Color.Transparent;
+            label1.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void odustaniButton_Click(object sender, EventArgs e)
@@ -49,7 +98,19 @@ namespace Projekt_faza_1
 
         private void roundButtonNatrag_Click(object sender, EventArgs e)
         {
-            
+            if (UlogiraniKorisnik.Uloga_id == 1)
+            {
+                this.Hide();
+                PregledSobaAdmin pregled = new PregledSobaAdmin(HotelProslijedeni);
+                pregled.ShowDialog();
+            }
+
+            if (UlogiraniKorisnik.Uloga_id == 2)
+            {
+                this.Hide();
+                PregledSoba pregled = new PregledSoba(HotelProslijedeni);
+                pregled.ShowDialog();
+            }
         }
     }
 }

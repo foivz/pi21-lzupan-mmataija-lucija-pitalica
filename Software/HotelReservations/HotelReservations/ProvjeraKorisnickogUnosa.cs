@@ -206,8 +206,102 @@ namespace Projekt_faza_1
             return postojiHotel;
         }
 
+        public static string ProvjeriDodavanjeIzmjenuSobe(string brojSobe, string velicina, string kapacitet, string sadrzaj, string napomena, string nazivHotela, string sadrzajKupaonice)
+        {
 
-        
+            string povratnaPoruka = "";
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriBrojSobe(brojSobe);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriVelicinu(velicina);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKapacitet(kapacitet);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriSadrzaj(sadrzaj);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriNapomenu(napomena);
+
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKupaonicu(sadrzajKupaonice);
+            if (povratnaPoruka == "")
+            {
+                if (BazaProvjeriDodavanjeIzmjenuSobe(brojSobe, velicina, kapacitet, sadrzaj, napomena, nazivHotela, sadrzajKupaonice) == true)
+                {
+                    povratnaPoruka += "Postoji zapis sa istim podacima!\n";
+                }
+            }
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriDodavanjeIzmjenuSobe(string brojSobe, string velicina, string kapacitet, string sadrzaj, string napomena, string nazivHotela, string sadrzajKupaonice)
+        {
+            bool postojiSoba = false;
+            List<SobaKlasa> lista = new List<SobaKlasa>();
+            string sqlUpit = $"SELECT * FROM Soba";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                SobaKlasa soba = RepozitorijSoba.DohvatiSobu(dr);
+                lista.Add(soba);
+            }
+            dr.Close();
+            foreach (SobaKlasa soba in lista)
+            {
+                if (soba.ID_soba == int.Parse(brojSobe) && soba.OIB_hotela == nazivHotela)
+                {
+                    postojiSoba = true;
+                }
+            }
+            return postojiSoba;
+        }
+
+
+
+
+
+        public static string ProvjeriIzmjenuSobe(int ID, string brojStari, HotelKlasa HotelProslijedeni, string brojNovi, string velicina, string kapacitet, string sadrzaj, string napomena, string nazivHotela, string sadrzajKupaonice)
+        {
+
+            string povratnaPoruka = "";
+
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriVelicinu(velicina);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKapacitet(kapacitet);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriSadrzaj(sadrzaj);
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriNapomenu(napomena);
+
+            povratnaPoruka += BibliotekeVanjske.ValidacijaUnosa.ProvjeriKupaonicu(sadrzajKupaonice);
+            if (povratnaPoruka == "")
+            {
+                if (BazaProvjeriIzmjenuSobe(ID, brojStari, HotelProslijedeni, brojNovi) == true)
+                {
+                    povratnaPoruka += "Postoji zapis sa istim podacima!\n";
+                }
+            }
+
+            return povratnaPoruka;
+        }
+        public static bool BazaProvjeriIzmjenuSobe(int ID, string brojStari, HotelKlasa HotelProslijedeni, string brojNovi)
+        {
+            bool postojiSoba = false;
+            List<SobaKlasa> lista = new List<SobaKlasa>();
+            string sqlUpit = $"SELECT Soba.id_soba, Soba.OIB_hotela, Soba.velicina_sobe, Soba.kapacitet,Soba.sadrzaj_sobe,Soba.sadrzaj_kupaonice,Soba.napomene,Soba.slobodna, Soba.broj_sobe, Soba.cijena FROM Soba,Hotel WHERE Soba.OIB_hotela=Hotel.OIB_hotela AND Hotel.OIB_hotela='{HotelProslijedeni.OIB_Hotela}'";
+            SqlDataReader dr = DB.Instance.DohvatiDataReader(sqlUpit);
+            while (dr.Read())
+            {
+                SobaKlasa soba = RepozitorijSoba.DohvatiSobu(dr);
+                lista.Add(soba);
+            }
+            dr.Close();
+            if (brojNovi == brojStari)
+            {
+                postojiSoba = false;
+            }
+            else
+            {
+                foreach (SobaKlasa soba in lista)
+                {
+                    if (soba.Broj_sobe == brojNovi)
+                    {
+                        postojiSoba = true;
+                    }
+                }
+            }
+            return postojiSoba;
+        }
+
 
 
 

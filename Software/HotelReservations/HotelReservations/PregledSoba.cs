@@ -13,17 +13,19 @@ namespace Projekt_faza_1
 {
     public partial class PregledSoba : Form
     {
-       
-        public PregledSoba()
+        public Klase.HotelKlasa ProsljeđeniHotel { get; set; }
+
+        public PregledSoba(Klase.HotelKlasa hotel)
         {
             InitializeComponent();
-         
+            ProsljeđeniHotel = hotel;
         }
 
         private void PregledSoba_Load(object sender, EventArgs e)
         {
-           
-           
+
+            OsvjeziSobe();
+            buttonRezerviraj.Enabled = false;
             popisSobaLabel.BackColor = System.Drawing.Color.Transparent;
             label1.BackColor= System.Drawing.Color.Transparent; 
             datumDolaskaLabel.BackColor= System.Drawing.Color.Transparent; 
@@ -47,7 +49,10 @@ namespace Projekt_faza_1
 
         private void azurirajSobuButton_Click(object sender, EventArgs e)
         {
-           
+            this.Hide();
+            SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+            AzurirajSobu azuriraj = new AzurirajSobu(soba, ProsljeđeniHotel);
+            azuriraj.ShowDialog();
 
 
         }
@@ -61,7 +66,10 @@ namespace Projekt_faza_1
 
         private void obrisiSobuButton_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            SobaKlasa soba = dataGridViewSoba.CurrentRow.DataBoundItem as SobaKlasa;
+            ObrisiSobu obrisi = new ObrisiSobu(soba);
+            obrisi.ShowDialog();
         }
 
         private void buttonOdustani_Click(object sender, EventArgs e)
@@ -77,7 +85,13 @@ namespace Projekt_faza_1
 
         private void buttonFiltriraj_Click(object sender, EventArgs e)
         {
-          
+            if (datumDolaskadateTimePicker.Value != datumOdlaskadateTimePicker.Value && !string.IsNullOrEmpty(textBoxKapacitet.Text))
+            {
+                buttonRezerviraj.Enabled = true;
+                string uvjet = "Kapacitet";
+                dataGridViewSoba.DataSource = null;
+                dataGridViewSoba.DataSource = RepozitorijSoba.DohvatiSlobodneSobePoDatumu(datumDolaskadateTimePicker.Value, datumOdlaskadateTimePicker.Value, uvjet, textBoxKapacitet.Text, ProsljeđeniHotel);
+            }
         }
 
         private void buttonUpit_Click(object sender, EventArgs e)

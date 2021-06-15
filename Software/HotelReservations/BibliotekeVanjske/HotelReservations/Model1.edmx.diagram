@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6e5f23abdb614903a4a82c8f0a1708cb" Name="Diagram1">
+        <EntityTypeShape EntityType="Model1.Gost" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Hotel" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Izvjesca" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Izvjesce_sadrzi" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Korisnik" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Popravio_kvar" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Prijava_kvara" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Recenzija" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Rezervacija" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Soba" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.sysdiagram" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Tip_zaposlenika" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Uloga" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Upit" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.Zaposlenik" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model1.FK_Prijava_kvara_Gost" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Recenzija_Gost" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Rezervacija_Gost" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Upit_Gost" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Soba_Hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Zaposlenik_Hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Izvjesca_Zaposlenik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Izvjesce_sadrzi_Izvjesca" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Izvjesce_sadrzi_Rezervacija" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Korisnik_Uloga" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Zaposlenik_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Popravio_kvar_Prijava_kvara" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Popravio_kvar_Zaposlenik" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Prijava_kvara_Soba" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Rezervacija_Soba" ManuallyRouted="false" />
+        <AssociationConnector Association="Model1.FK_Zaposlenik_Tip_zaposlenika" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
